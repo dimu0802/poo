@@ -1,39 +1,103 @@
-# Nu primesc notă pentru că nu am pus titlu și descriere
+# Fencing Duel-Olympic Glory
 
-### Important!
-Aveți voie cu cod generat de modele de limbaj la care nu ați contribuit semnificativ doar în folder-ul `generated`.
-Codul generat pus "ca să fie"/pe care nu îl înțelegeți se punctează doar pentru puncte bonus, doar în contextul
-în care oferă funcționalități ajutătoare și doar dacă are sens.
+Dupa ce ti-ai dedicat o viata intreaga acestui sport, ai reusit sa ajungi in finala olimpica! Felicitari! Acum urmeaza cel mai important meci al tau, cel care te poate propulsa in istoria sportului tau. Crezi ca faci fata provocarii? 
 
-O cerință nu se consideră îndeplinită dacă este realizată doar ca o serie de apeluri proxy către cod generat.
+ 
 
-### Cerințe modele de limbaj la nivel de semestru
-- [ ] minim o funcționalitate majoritar doar cu LLM
-- [ ] minim 2-3 funcționalități ~50% voi, ~50% LLM-ul
-- [ ] minim 2-3 funcționalități suficient de complicate pe care un LLM nu le poate implementa
+REGULI 
 
-### Tema 0
+INTRODUCERE: 
 
-- [ ] Nume proiect (poate fi schimbat ulterior)
-- [ ] Scurtă descriere a temei alese, ce v-ați propus să implementați
+Pentru simplitatea explicatiei, vom defini urmatorul set de reguli: 
+
+Scopul jocului este acela de a ajunge la 5 puncte(scoruri castigatoare: 5-0, 5-3, 5-4 etc.). 
+
+Scrima este un sport individual jucat intre doi adversari directi, deci meciul va fi intre P1 si P2. Suprafata de lupta (numita in termeni de specialitate plansa de scrima) va avea 12 spatii. Pentru o imagine mai buna, sa definim suprafata de joc ca un vector suprafata[12]. 
+
+              
+
+Suprafata[12]: 
+
+[ 0 ][ 1 ][ 2 ][ 3 ][ 4 ][ 5 ][ 6 ][ 7 ][ 8 ][ 9 ][10 ][11 ] 
+
+ 
+
+START MECI: 
+
+Orice meci de scrima incepe de la mijlocul plansei, adversarii aflandu se la doua bucati distanta. Deci, P1 va fi pozitionat pe suprafata[4], iar P2 pe suprafata[7]. 
+
+[   ][   ][   ][   ][ P1 ][   ][   ][ P2 ][   ][   ][   ][   ]   
+
+In mod arbitrat, vom alege ca cel care incepe sa fie P1 (dupa ce unul dintre adversari puncteaza si se revine la pozitia initiala, va fi randul lui P2 sa inceapa si tot asa).  
+
+Definim momentul in care cei doi adversari se afla unul in fata celuilalt ca fiind MOMENT DE LUPTA. In aceasta situatie se poate ajunge folosind mutarile de deplasare: PAS_INAINTE si PAS_INAPOI. Din pozitia de start, daca P1 ar folosi comanda PAS_INAINTE acesta ar ajunge de pe suprafata[4] pe suprafata[5]. Dupa mutarea lui P1 este randul lui P2 sa aleaga directia in care va avansa cu o casuta. 
+
+ 
+
+ 
+
+ 
+
+MOMENT DE LUPTA: 
+
+[  ][   ][   ][   ][   ][   ][   ][   ][   ][ P1][ P2 ][   ] 
+
+Sa presupunem ca P1 este cel care a avansat ultimul si a generat un MOMENT DE LUPTA. Astfel, el este cel al carui rand va fi, deoarece scrima este un sport de lupta si cel care initiaza actiunea are prioritate.  
+
+ 
+
+ACTIUNI si PUNCTARE 
+
+In continuare, definim cele trei ACTIUNI din MOMENTUL DE LUPTA: 
+
+ATAC – lovitura rapida 
+
+OCOLIRE DE PARADA – atac inselator 
+
+PARADA – apara care poate fi dejucata 
+
+Fiecare jucator isi va alege in acest moment in acest moment. In functie de ce alege fiecare, vor fi 6 situatiii separate. 
+
+Le explicam:  
+
+-Daca atat P1 cat si P2 aleg ATAC, ambii vor puncta si vor primi cate un punct. Se revine la pozitia initiala. 
+
+-Daca atat P1 cat si P2 aleg PARADA, cei doi vor face cate un pas inapoi, deoarece nu au aratat intentia de a ataca. 
+
+-Daca atat P1 cat si P2 aleg OCOLIRE DE PARADA, ambii vor puncta si vor primi cate un punct. Se revine la pozitia initiala. 
+
+-Daca P1 alege ATAC si P2 alege PARADA, P2 castiga un punct, deoarece a ghicit intentia lui P1 de a ataca. Se revina la pozitia initiala. 
+
+-Daca P1 alege ATAC si P2 alege OCOLIRE DE PARADA, P1 castiga un punct deoarece atacul este mai rapid decat ocolirea de parada. Se revine la pozitia initiala. 
+
+-Daca P1 alege PARADA si P2 alege OCOLIRE DE PARADA, P2 castiga un punct deoarece a ghicit decizia lui P1 de a se apara. Se revine la pozitia initiala. 
+
+ 
+
+FINAL 
+
+Asa se puncteaza. Cel care ajunge primul la 5 castiga. Exista situatia speciala in care unul dintre jucatori ajunge la capatul suprafetei (P1 la suprafata[0] sau P2 la suprafata[11]). In aceasta situatie, cel care este la capat nu mai avea varianta de PARADA, deoarece aceasta presupune un pas inapoi, pentru care nu mai e loc. 
+
+Asta e tot. Intuitia sa fie cu tine. Asteptam AURUL!
+
 
 ## Tema 1
 
 #### Cerințe
-- [ ] definirea a minim **3-4 clase** folosind compunere cu clasele definite de voi
-- [ ] constructori de inițializare cu parametri
-- [ ] pentru o aceeași (singură) clasă: constructor de copiere, `operator=` de copiere, destructor
+- [x] definirea a minim **3-4 clase** folosind compunere cu clasele definite de voi
+- [x] constructori de inițializare cu parametri
+- [x] pentru o aceeași (singură) clasă: constructor de copiere, `operator=` de copiere, destructor
 <!-- - [ ] pentru o altă clasă: constructor de mutare, `operator=` de mutare, destructor -->
 <!-- - [ ] pentru o altă clasă: toate cele 5 funcții membru speciale -->
-- [ ] `operator<<` pentru toate clasele pentru afișare (std::ostream)
-- [ ] cât mai multe `const` (unde este cazul)
-- [ ] implementarea a minim 3 funcții membru publice pentru funcționalități specifice temei alese, dintre care cel puțin 1-2 funcții mai complexe
+- [x] `operator<<` pentru toate clasele pentru afișare (std::ostream)
+- [x] cât mai multe `const` (unde este cazul)
+- [x] implementarea a minim 3 funcții membru publice pentru funcționalități specifice temei alese, dintre care cel puțin 1-2 funcții mai complexe
   - nu doar citiri/afișări sau adăugat/șters elemente într-un/dintr-un vector
-- [ ] scenariu de utilizare a claselor definite:
+- [x] scenariu de utilizare a claselor definite:
   - crearea de obiecte și apelarea tuturor funcțiilor membru publice în main
   - vor fi adăugate în fișierul `tastatura.txt` DOAR exemple de date de intrare de la tastatură (dacă există); dacă aveți nevoie de date din fișiere, creați alte fișiere separat
-- [ ] tag de `git`: de exemplu `v0.1`
-- [ ] serviciu de integrare continuă (CI); exemplu: GitHub Actions
+- [x] tag de `git`: de exemplu `v0.1`
+- [x] serviciu de integrare continuă (CI); exemplu: GitHub Actions
 
 ## Tema 2
 
