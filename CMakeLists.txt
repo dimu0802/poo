@@ -10,6 +10,13 @@ project(oop)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(SRC_FILES
+    generated/src/joc.cpp
+    generated/src/jucator.cpp
+    generated/src/lupta.cpp
+    generated/src/scor.cpp
+    generated/src/suprafata.cpp
+)
 
 include(cmake/Options.cmake)
 
@@ -42,9 +49,14 @@ include(cmake/Options.cmake)
 ###############################################################################
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
+# add_executable(${PROJECT_NAME}
+#     main.cpp
+#     generated/src/Helper.cpp
+# )
+
 add_executable(${PROJECT_NAME}
     main.cpp
-    generated/src/Helper.cpp
+    ${SRC_FILES}
 )
 
 include(cmake/CompilerFlags.cmake)
@@ -69,5 +81,4 @@ endif()
 
 include(cmake/CopyHelper.cmake)
 copy_files(FILES tastatura.txt)
-# copy_files(FILES tastatura.txt config.json DIRECTORY images sounds)
 # copy_files(DIRECTORY images sounds)
