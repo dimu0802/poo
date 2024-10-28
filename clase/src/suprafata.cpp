@@ -1,5 +1,5 @@
 #include <iostream>
-#include "suprafata.h"
+#include "../include/suprafata.h"
 
 Suprafata::Suprafata(Jucator& p1_dat, Jucator& p2_dat):
     p1(p1_dat), p2(p2_dat){}

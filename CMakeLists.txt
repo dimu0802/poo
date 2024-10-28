@@ -11,11 +11,11 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(SRC_FILES
-    generated/src/joc.cpp
-    generated/src/jucator.cpp
-    generated/src/lupta.cpp
-    generated/src/scor.cpp
-    generated/src/suprafata.cpp
+    clase/src/joc.cpp
+    clase/src/jucator.cpp
+    clase/src/lupta.cpp
+    clase/src/scor.cpp
+    clase/src/suprafata.cpp
 )
 
 include(cmake/Options.cmake)
@@ -65,6 +65,8 @@ include(cmake/CompilerFlags.cmake)
 
 # use SYSTEM so cppcheck and clang-tidy do not report warnings from these directories
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE generated/include)
+target_include_directories(${PROJECT_NAME} PRIVATE clase/include)
+
 # target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ext/<SomeHppLib>/include)
 # target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${<SomeLib>_SOURCE_DIR}/include)
 # target_link_directories(${PROJECT_NAME} PRIVATE ${<SomeLib>_BINARY_DIR}/lib)
@@ -78,6 +80,7 @@ install(TARGETS ${PROJECT_NAME} DESTINATION ${DESTINATION_DIR})
 if(APPLE)
     install(FILES launcher.command DESTINATION ${DESTINATION_DIR})
 endif()
+
 
 include(cmake/CopyHelper.cmake)
 copy_files(FILES tastatura.txt)

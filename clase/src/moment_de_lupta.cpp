@@ -1,5 +1,5 @@
 #include <iostream>
-#include "lupta.h"
+#include "../include/lupta.h"
 
 Lupta::Lupta(Jucator& p1_dat, Jucator& p2_dat, Suprafata& suprafata_data):
     p1(p1_dat), p2(p2_dat), suprafata(suprafata_data){}

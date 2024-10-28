@@ -1,5 +1,5 @@
 #include <iostream>
-#include "jucator.h"
+#include "../include/jucator.h"
 
 Jucator::Jucator(const std::string& numedat, int pozitie_initiala, int numar_puncte_initial)
 :nume(numedat), pozitie(pozitie_initiala), numar_puncte(numar_puncte_initial){} 

@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
-#include "generated/include/joc.h"
-#include "generated/include/jucator.h"
-#include "generated/include/lupta.h"
-#include "generated/include/suprafata.h"
-#include "generated/include/scor.h"
+#include "joc.h"
+#include "jucator.h"
+#include "lupta.h"
+#include "suprafata.h"
+#include "scor.h"
 
 
 int main(){
