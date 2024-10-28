@@ -2,7 +2,7 @@
 #include "../include/suprafata.h"
 
 Suprafata::Suprafata(Jucator& p1_dat, Jucator& p2_dat):
-    p1(p1_dat), p2(p2_dat), suprafata{0}{}
+    p1(p1_dat), p2(p2_dat){}
 
 void Suprafata::suprafata_noua(){
     int poz1=p1.pozitie_actuala();
