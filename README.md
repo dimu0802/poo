@@ -24,7 +24,7 @@ Suprafata[12]:
 
 START MECI: 
 
-Orice meci de scrima incepe de la mijlocul plansei, adversarii aflandu se la doua bucati distanta. Deci, P1 va fi pozitionat pe suprafata[4], iar P2 pe suprafata[7]. 
+Orice meci de scrima incepe de la mijlocul plansei, adversarii aflandu-se la doua bucati distanta. Deci, P1 va fi pozitionat pe suprafata[4], iar P2 pe suprafata[7]. 
 
 [   ][   ][   ][   ][ P1 ][   ][   ][ P2 ][   ][   ][   ][   ]   
 
@@ -56,7 +56,7 @@ OCOLIRE DE PARADA – atac inselator
 
 PARADA – apara care poate fi dejucata 
 
-Fiecare jucator isi va alege in acest moment in acest moment. In functie de ce alege fiecare, vor fi 6 situatiii separate. 
+Fiecare jucator isi va alege in acest moment in acest moment. In functie de ce alege fiecare, vor fi 6 situatii separate. 
 
 Le explicam:  
 
@@ -66,7 +66,7 @@ Le explicam:
 
 -Daca atat P1 cat si P2 aleg OCOLIRE DE PARADA, ambii vor puncta si vor primi cate un punct. Se revine la pozitia initiala. 
 
--Daca P1 alege ATAC si P2 alege PARADA, P2 castiga un punct, deoarece a ghicit intentia lui P1 de a ataca. Se revina la pozitia initiala. 
+-Daca P1 alege ATAC si P2 alege PARADA, P2 castiga un punct, deoarece a ghicit intentia lui P1 de a ataca. Se revine la pozitia initiala. 
 
 -Daca P1 alege ATAC si P2 alege OCOLIRE DE PARADA, P1 castiga un punct deoarece atacul este mai rapid decat ocolirea de parada. Se revine la pozitia initiala. 
 
