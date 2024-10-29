@@ -19,10 +19,10 @@ void Lupta::proceseaza_actiuni_egale(int actiune) {
 
 void Lupta::proceseaza_actiuni_diferite(int actiune1, int actiune2) {
     if ((actiune1 == 0 && actiune2 == 2) || (actiune1 == 1 && actiune2 == 0) || (actiune1 == 2 && actiune2 == 1)) {
-        std::cout << "A punctat Jucatorul 1!";
+        std::cout << "A punctat Jucatorul 2!\n";
         p1.primeste_un_punct();
     } else {
-        std::cout << "A punctat Jucatorul 2!";
+        std::cout << "A punctat Jucatorul 1!\n";
         p2.primeste_un_punct();
     }
     suprafata.suprafata_noua();
