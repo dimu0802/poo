@@ -10,7 +10,7 @@ INTRODUCERE:
 
 Pentru simplitatea explicatiei, vom defini urmatorul set de reguli: 
 
-Scopul jocului este acela de a ajunge la 5 puncte(scoruri castigatoare: 5-0, 5-3, 5-4 etc.). 
+Scopul jocului este acela de a ajunge la 5 puncte (scoruri castigatoare: 5-0, 5-3, 5-4 etc.). 
 
 Scrima este un sport individual jucat intre doi adversari directi, deci meciul va fi intre P1 si P2. Suprafata de lupta (numita in termeni de specialitate plansa de scrima) va avea 12 spatii. Pentru o imagine mai buna, sa definim suprafata de joc ca un vector suprafata[12]. 
 
@@ -56,7 +56,7 @@ OCOLIRE DE PARADA – atac inselator
 
 PARADA – apara care poate fi dejucata 
 
-Fiecare jucator isi va alege in acest moment in acest moment. In functie de ce alege fiecare, vor fi 6 situatii separate. 
+Fiecare jucator isi va alege actiunea in acest moment. In functie de ce alege fiecare, vor fi 6 situatii separate. 
 
 Le explicam:  
 

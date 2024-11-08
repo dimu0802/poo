@@ -6,11 +6,11 @@ Lupta::Lupta(Jucator& p1_dat, Jucator& p2_dat, Suprafata& suprafata_data):
 
 void Lupta::proceseaza_actiuni_egale(int actiune) {
     if (actiune == 0 || actiune == 1) {
-        std::cout << "Ambii jucatori au punctat!";
+        std::cout << "Ambii jucatori au punctat!\n";
         p1.primeste_un_punct();
         p2.primeste_un_punct();
     } else if (actiune == 2) {
-        std::cout << "Ambii jucatori au parat. Fiecare se retrage un pas.";
+        std::cout << "Ambii jucatori au parat. Fiecare se retrage un pas.\n";
         p1.se_retrage_o_pozitie();
         p2.avanseaza_o_pozitie();
     }
@@ -20,10 +20,10 @@ void Lupta::proceseaza_actiuni_egale(int actiune) {
 void Lupta::proceseaza_actiuni_diferite(int actiune1, int actiune2) {
     if ((actiune1 == 0 && actiune2 == 2) || (actiune1 == 1 && actiune2 == 0) || (actiune1 == 2 && actiune2 == 1)) {
         std::cout << "A punctat Jucatorul 2!\n";
-        p1.primeste_un_punct();
+        p2.primeste_un_punct();
     } else {
         std::cout << "A punctat Jucatorul 1!\n";
-        p2.primeste_un_punct();
+        p1.primeste_un_punct();
     }
     suprafata.suprafata_noua();
 }
