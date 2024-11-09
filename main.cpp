@@ -1,10 +1,12 @@
 #include <iostream>
 #include <string>
+#include "constante.h"
 #include "joc.h"
 #include "jucator.h"
 #include "lupta.h"
 #include "suprafata.h"
 #include "scor.h"
+
 
 
 int main(){

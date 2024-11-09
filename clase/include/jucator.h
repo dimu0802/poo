@@ -2,6 +2,7 @@
 #define JUCATOR_H
 
 #include <iostream>
+#include "constante.h"
 
 class Jucator{
 private:

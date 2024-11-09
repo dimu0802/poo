@@ -9,10 +9,9 @@ void Joc::start(){
     std::cout<<"\n";
     std::cout<<"Incepe jocul! Mult succes ambilor jucatori!\n\n";
     suprafata.suprafata_noua();
-    suprafata.afisare_suprafata_actuala();
+    operator<<(std::cout, suprafata);
     continua();  
 }
-
 void Joc::continua(){
     if(!p1.verificare_pozitie_capat() && !p2.verificare_pozitie_capat()){
         std::cout<<"Jucatorul p1: ";
@@ -20,20 +19,18 @@ void Joc::continua(){
         std::cout<<"Jucatorul p2: ";
         p2.alegere_mutare();
         suprafata.suprafata_noua();
-        suprafata.afisare_suprafata_actuala();
-        if(verificare_moment_lupta(p1.pozitie_actuala(), p2.pozitie_actuala())){
-        int verif=moment.moment_al_jocului();
-        if(verif==0){
-            operator<<(std::cout, scor);
-            suprafata.resetare_suprafata();
-            suprafata.suprafata_noua();
-            suprafata.afisare_suprafata_actuala();
-        }else{
-            continua();
-        }
+        operator<<(std::cout, suprafata);
+        if(verificare_moment_lupta()){
+            if(moment.moment_al_jocului()){
+                operator<<(std::cout, scor);
+                suprafata.resetare_suprafata();
+                suprafata.suprafata_noua();
+                operator<<(std::cout, suprafata);
+            }else{
+                continua();
+            }
         }else continua();
-
-        if(verificare_meci_incheiat(p1.scor_actual(), p2.scor_actual())){
+        if(verificare_meci_incheiat()){
         }else{
         continua();
         }
@@ -43,7 +40,7 @@ void Joc::continua(){
         p1.avanseaza_o_pozitie();
         p2.se_retrage_o_pozitie();
         suprafata.suprafata_noua();
-        suprafata.afisare_suprafata_actuala();
+        operator<<(std::cout, suprafata);
     }
     else if(p1.verificare_pozitie_capat()){
         std::cout<<"Jucatorul p1 va fi mutat automat o pozitie inainte, deoarece este la capat\n";
@@ -51,20 +48,19 @@ void Joc::continua(){
         std::cout<<"Jucatorul p2: ";
         p2.alegere_mutare();
         suprafata.suprafata_noua();
-        suprafata.afisare_suprafata_actuala();
-        if(verificare_moment_lupta(p1.pozitie_actuala(), p2.pozitie_actuala())){
-        int verif=moment.moment_al_jocului();
-        if(verif==0){
-            operator<<(std::cout, scor);
-            suprafata.resetare_suprafata();
-            suprafata.suprafata_noua();
-            suprafata.afisare_suprafata_actuala();
-        }else{
-            continua();
-        }
+        operator<<(std::cout, suprafata);
+        if(verificare_moment_lupta()){
+            
+            if(moment.moment_al_jocului()){
+                operator<<(std::cout, scor);
+                suprafata.resetare_suprafata();
+                suprafata.suprafata_noua();
+                operator<<(std::cout, suprafata);
+            }else{
+                continua();
+            }
         }else continua();
-
-        if(verificare_meci_incheiat(p1.scor_actual(), p2.scor_actual())){
+        if(verificare_meci_incheiat()){
         }else{
         continua();
         }
@@ -75,33 +71,35 @@ void Joc::continua(){
         std::cout<<"Jucatorul p1: ";
         p1.alegere_mutare();
         suprafata.suprafata_noua();
-        suprafata.afisare_suprafata_actuala();
-        if(verificare_moment_lupta(p1.pozitie_actuala(), p2.pozitie_actuala())){
-        int verif=moment.moment_al_jocului();
-        if(verif==0){
-            operator<<(std::cout, scor);
-            suprafata.resetare_suprafata();
-            suprafata.suprafata_noua();
-            suprafata.afisare_suprafata_actuala();
-        }else{
-            continua();
-        }
+        operator<<(std::cout, suprafata);
+        if(verificare_moment_lupta()){
+            if(moment.moment_al_jocului()){
+                operator<<(std::cout, scor);
+                suprafata.resetare_suprafata();
+                suprafata.suprafata_noua();
+                operator<<(std::cout, suprafata);
+            }else{
+                continua();
+            }
         }else continua();
-
-        if(verificare_meci_incheiat(p1.scor_actual(), p2.scor_actual())){
+        if(verificare_meci_incheiat()){
         }else{
         continua();
         }
     }
 }
 
-bool Joc::verificare_moment_lupta(int poz1, int poz2){
+bool Joc:: verificare_moment_lupta(){
+    int poz1=p1.pozitie_actuala();
+    int poz2=p2.pozitie_actuala();
     if(poz2-poz1==1){
         return true;
     }else return false;
 }
 
-bool Joc::verificare_meci_incheiat(int puncte1, int puncte2){
+bool Joc::verificare_meci_incheiat(){
+    int puncte1=p1.scor_actual();
+    int puncte2=p2.scor_actual();
     if(puncte1==5 || puncte2==5){
         if(puncte1==5){
         std::cout<<"Felicitari! Jucatorul 1 castiga Aurul!\n";
@@ -111,3 +109,5 @@ bool Joc::verificare_meci_incheiat(int puncte1, int puncte2){
         return true;
     }else return false;
 }
+
+

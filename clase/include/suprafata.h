@@ -4,21 +4,22 @@
 #include <iostream>
 #include <array>
 #include "jucator.h"
+#include "constante.h"
 
 class Suprafata{
 private:
-    std::array<int, 12> suprafata;
+    std::array<int, lungime_plansa> suprafata;
     Jucator& p1;
     Jucator& p2;
+    void initializeaza_suprafata(int poz1, int poz2);
 public:
     explicit Suprafata(Jucator& p1_dat, Jucator& p2_dat);
     void suprafata_noua();
-    void afisare_suprafata_actuala();
     void resetare_suprafata();
     friend std::ostream& operator<<(std::ostream& os, const Suprafata& sup){
-        os<<"suprafata de lupta pentru acest meci: \n";
+        os<<"Pozitionarea jucatorilor: \n";
         
-        for(size_t i=0; i<sup.suprafata.size(); i++){
+        for(size_t i=0; i<lungime_plansa; i++){
             if(sup.suprafata[i]==0){
                 os<<"[__]";
             }
@@ -28,7 +29,7 @@ public:
                 os<<"[ p2 ]";
             }
         }
-        os<<"[ p2 ]";
+        os<<"\n\n";
         return os;
     }
 };

@@ -37,7 +37,7 @@ void Jucator::actualizeaza_pozitie(int pozitie_dorita){
 }
 
 int Jucator::alege_actiune(){
-    std::cout<<"Alege actiunea dorita(ATAC[0], OCOLIRE DE PARADA[1], PARADA[2]: \n";
+    std::cout<<"Alege actiunea dorita(ATAC[1], OCOLIRE DE PARADA[2], PARADA[3]: \n";
     int actiune_aleasa;
     std::cin>>actiune_aleasa;
     return actiune_aleasa;
@@ -59,7 +59,7 @@ Jucator::~Jucator(){}
 
 bool Jucator::verificare_pozitie_capat(){
     int poz=pozitie_actuala();
-    if(poz==0 || poz==11){
+    if(poz==capat_dreapta || poz==capat_stanga){
         return true;
     }
     else return false;

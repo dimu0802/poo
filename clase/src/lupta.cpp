@@ -5,11 +5,11 @@ Lupta::Lupta(Jucator& p1_dat, Jucator& p2_dat, Suprafata& suprafata_data):
     p1(p1_dat), p2(p2_dat), suprafata(suprafata_data) {}
 
 void Lupta::proceseaza_actiuni_egale(int actiune) {
-    if (actiune == 0 || actiune == 1) {
+    if (actiune == atac || actiune == ocolire) {
         std::cout << "Ambii jucatori au punctat!\n";
         p1.primeste_un_punct();
         p2.primeste_un_punct();
-    } else if (actiune == 2) {
+    } else if (actiune == parada) {
         std::cout << "Ambii jucatori au parat. Fiecare se retrage un pas.\n";
         p1.se_retrage_o_pozitie();
         p2.avanseaza_o_pozitie();
@@ -18,7 +18,7 @@ void Lupta::proceseaza_actiuni_egale(int actiune) {
 }
 
 void Lupta::proceseaza_actiuni_diferite(int actiune1, int actiune2) {
-    if ((actiune1 == 0 && actiune2 == 2) || (actiune1 == 1 && actiune2 == 0) || (actiune1 == 2 && actiune2 == 1)) {
+    if ((actiune1 == atac && actiune2 == parada) || (actiune1 == ocolire && actiune2 == atac) || (actiune1 == parada && actiune2 == ocolire)) {
         std::cout << "A punctat Jucatorul 2!\n";
         p2.primeste_un_punct();
     } else {
@@ -28,7 +28,7 @@ void Lupta::proceseaza_actiuni_diferite(int actiune1, int actiune2) {
     suprafata.suprafata_noua();
 }
 
-int Lupta::moment_al_jocului() {
+bool Lupta::moment_al_jocului() {
     std::cout << "Va aflati intr-un moment de lupta! Fiecare jucator sa-si aleaga actiunea!\n";
     std::cout << "Jucatorul p1: ";
     int actiune1 = p1.alege_actiune();
@@ -42,5 +42,5 @@ int Lupta::moment_al_jocului() {
         proceseaza_actiuni_diferite(actiune1, actiune2);
     }
 
-    return (actiune1 == 2 && actiune2 == 2) ? 1 : 0;
+    return (actiune1 == 2 && actiune2 == 2) ? false : true;
 }
