@@ -8,7 +8,7 @@
 
 class Suprafata{
 private:
-    std::array<int, lungime_plansa> suprafata;
+    std::array<int, lungime_plansa> suprafata={0};
     Jucator& p1;
     Jucator& p2;
     void initializeaza_suprafata(int poz1, int poz2);
