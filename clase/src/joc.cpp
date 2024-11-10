@@ -30,7 +30,11 @@ void Joc::continua(){
                 continua();
             }
         }else continua();
-        if(verificare_meci_incheiat()){
+        
+        if(verificare_meci_incheiat()){}
+        else if(verificare_egalitate4()){
+            egalitate4();
+            continua();
         }else{
         continua();
         }
@@ -60,7 +64,11 @@ void Joc::continua(){
                 continua();
             }
         }else continua();
-        if(verificare_meci_incheiat()){
+        
+        if(verificare_meci_incheiat()){}
+        else if(verificare_egalitate4()){
+            egalitate4();
+            continua();
         }else{
         continua();
         }
@@ -82,7 +90,11 @@ void Joc::continua(){
                 continua();
             }
         }else continua();
-        if(verificare_meci_incheiat()){
+
+        if(verificare_meci_incheiat()){}
+        else if(verificare_egalitate4()){
+            egalitate4();
+            continua();
         }else{
         continua();
         }
@@ -100,7 +112,7 @@ bool Joc:: verificare_moment_lupta(){
 bool Joc::verificare_meci_incheiat(){
     int puncte1=p1.scor_actual();
     int puncte2=p2.scor_actual();
-    if(puncte1==5 || puncte2==5){
+    if((puncte1==5 && puncte2!=5) || (puncte2==5 && puncte1!=5)){
         if(puncte1==5){
         std::cout<<"Felicitari! Jucatorul 1 castiga Aurul!\n";
         }else{
@@ -108,6 +120,26 @@ bool Joc::verificare_meci_incheiat(){
         }
         return true;
     }else return false;
+}
+
+bool Joc::verificare_egalitate4(){
+    int puncte1=p1.scor_actual();
+    int puncte2=p2.scor_actual();
+    if(puncte1==5 && puncte2==5){
+        return true;
+    }else return false;
+}
+
+void Joc::egalitate4(){
+    int puncte1=p1.scor_actual();
+    int puncte2=p2.scor_actual();
+    if(puncte1==5 && puncte2==5){
+        std::cout<<"Scorul este 5-5. Se scoate cate o tusa de la fiecare jucator. \nVom juca pana cand unul dintre jucatori puncteaza o lovitura simpla.\nScorul este 4-4\n\n";
+    }
+    p1.scade_un_punct();
+    p2.scade_un_punct();
+    suprafata.suprafata_noua();
+    operator<<(std::cout, suprafata);
 }
 
 

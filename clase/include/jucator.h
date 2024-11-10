@@ -27,6 +27,7 @@ public:
     void actualizeaza_pozitie(int pozitie_dorita);
     int alege_actiune();
     void primeste_un_punct();
+    void scade_un_punct();
     int scor_actual();
     int pozitie_actuala();
     void revenire_pozitie_initiala(int pozitie_initiala);

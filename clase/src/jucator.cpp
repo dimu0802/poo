@@ -47,6 +47,10 @@ void Jucator::primeste_un_punct(){
     numar_puncte++;
 }
 
+void Jucator::scade_un_punct(){
+    numar_puncte--;
+}
+
 int Jucator::scor_actual(){return numar_puncte;}
 int Jucator::pozitie_actuala(){return pozitie;}
 
