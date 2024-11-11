@@ -31,7 +31,8 @@ void Joc::continua(){
             }
         }else continua();
         
-        if(verificare_meci_incheiat()){}
+        if(verificare_meci_incheiat()){
+        }
         else if(verificare_egalitate4()){
             egalitate4();
             continua();
@@ -65,7 +66,8 @@ void Joc::continua(){
             }
         }else continua();
         
-        if(verificare_meci_incheiat()){}
+        if(verificare_meci_incheiat()){
+        }
         else if(verificare_egalitate4()){
             egalitate4();
             continua();
@@ -91,7 +93,8 @@ void Joc::continua(){
             }
         }else continua();
 
-        if(verificare_meci_incheiat()){}
+        if(verificare_meci_incheiat()){
+        }
         else if(verificare_egalitate4()){
             egalitate4();
             continua();
