@@ -8,6 +8,7 @@ Joc::Joc(const std::string& nume1, const std::string& nume2, int pozitie1, int p
 void Joc::start(){
     std::cout<<"\n";
     std::cout<<"Incepe jocul! Mult succes ambilor jucatori!\n\n";
+    std::cout<<"*********************************************************\n";
     suprafata.suprafata_noua();
     std::cout<<suprafata;
     continua();  
@@ -28,25 +29,29 @@ void Joc::continua(){
         p2.se_retrage_o_pozitie();
         suprafata.suprafata_noua();
         std::cout<<suprafata;
-    }else if(p1.verificare_pozitie_capat()){
+    }else if(p1.verificare_pozitie_capat() || p2.verificare_pozitie_capat()){
+        jucator_la_capat();
+    }
+}
+
+void Joc::jucator_la_capat(){
+    if(p1.verificare_pozitie_capat()){
         std::cout<<"Jucatorul p1 va fi mutat automat o pozitie inainte, deoarece este la capat\n";
         p1.avanseaza_o_pozitie();
         std::cout<<"Jucatorul p2: ";
         p2.alegere_mutare();
-        suprafata.suprafata_noua();
-        std::cout<<suprafata;
-        continuare_moment_lupta();    
-        continuare_meci_incheiat();
     }else if(p2.verificare_pozitie_capat()){
         std::cout<<"Jucatorul p2 va fi mutat automat o pozitie inapoi, deoarece este la capat\n";
+        p2.avanseaza_o_pozitie();
         std::cout<<"Jucatorul p1: ";
         p1.alegere_mutare();
-        suprafata.suprafata_noua();
-        std::cout<<suprafata;
-        continuare_moment_lupta();   
-        continuare_meci_incheiat();
     }
+    suprafata.suprafata_noua();
+    std::cout<<suprafata;
+    continuare_moment_lupta();   
+    continuare_meci_incheiat();
 }
+
 
 void Joc::continuare_moment_lupta(){
     if(verificare_moment_lupta()){

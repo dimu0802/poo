@@ -14,6 +14,7 @@ private:
     Lupta moment;
     void continuare_moment_lupta();
     void continuare_meci_incheiat();
+    void jucator_la_capat();
     bool verificare_moment_lupta();
     bool verificare_meci_incheiat();
     bool verificare_egalitate4();
