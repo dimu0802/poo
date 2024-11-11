@@ -9,7 +9,7 @@ void Joc::start(){
     std::cout<<"\n";
     std::cout<<"Incepe jocul! Mult succes ambilor jucatori!\n\n";
     suprafata.suprafata_noua();
-    operator<<(std::cout, suprafata);
+    std::cout<<suprafata;
     continua();  
 }
 void Joc::continua(){
@@ -20,25 +20,27 @@ void Joc::continua(){
         p2.alegere_mutare();
         suprafata.suprafata_noua();
         operator<<(std::cout, suprafata);
-        if(verificare_moment_lupta()){
-            if(moment.moment_al_jocului()){
-                operator<<(std::cout, scor);
-                suprafata.resetare_suprafata();
-                suprafata.suprafata_noua();
-                operator<<(std::cout, suprafata);
-            }else{
-                continua();
-            }
-        }else continua();
+        continuare_moment_lupta();
+        // if(verificare_moment_lupta()){
+        //     if(moment.moment_al_jocului()){
+        //         operator<<(std::cout, scor);
+        //         suprafata.resetare_suprafata();
+        //         suprafata.suprafata_noua();
+        //         operator<<(std::cout, suprafata);
+        //     }else{
+        //         continua();
+        //     }
+        // }else continua();
         
-        if(verificare_meci_incheiat()){
-        }
-        else if(verificare_egalitate4()){
-            egalitate4();
-            continua();
-        }else{
-        continua();
-        }
+        continuare_meci_incheiat();
+        // if(verificare_meci_incheiat()){
+        // }
+        // else if(verificare_egalitate4()){
+        //     egalitate4();
+        //     continua();
+        // }else{
+        // continua();
+        // }
     }
     else if(p1.verificare_pozitie_capat() && p2.verificare_pozitie_capat()){
         std::cout<<"Ambii jucatori vor avansa o pozitie automat, deoarece sunt la capatul plansei\n";
@@ -53,27 +55,28 @@ void Joc::continua(){
         std::cout<<"Jucatorul p2: ";
         p2.alegere_mutare();
         suprafata.suprafata_noua();
-        operator<<(std::cout, suprafata);
-        if(verificare_moment_lupta()){
-            
-            if(moment.moment_al_jocului()){
-                operator<<(std::cout, scor);
-                suprafata.resetare_suprafata();
-                suprafata.suprafata_noua();
-                operator<<(std::cout, suprafata);
-            }else{
-                continua();
-            }
-        }else continua();
+        std::cout<<suprafata;
+        continuare_moment_lupta();
+        // if(verificare_moment_lupta()){
+        //     if(moment.moment_al_jocului()){
+        //         operator<<(std::cout, scor);
+        //         suprafata.resetare_suprafata();
+        //         suprafata.suprafata_noua();
+        //         operator<<(std::cout, suprafata);
+        //     }else{
+        //         continua();
+        //     }
+        // }else continua();
         
-        if(verificare_meci_incheiat()){
-        }
-        else if(verificare_egalitate4()){
-            egalitate4();
-            continua();
-        }else{
-        continua();
-        }
+        continuare_meci_incheiat();
+        // if(verificare_meci_incheiat()){
+        // }
+        // else if(verificare_egalitate4()){
+        //     egalitate4();
+        //     continua();
+        // }else{
+        // continua();
+        // }
     }
     
     else if(p2.verificare_pozitie_capat()){
@@ -82,7 +85,32 @@ void Joc::continua(){
         p1.alegere_mutare();
         suprafata.suprafata_noua();
         operator<<(std::cout, suprafata);
-        if(verificare_moment_lupta()){
+
+        continuare_moment_lupta();
+        // if(verificare_moment_lupta()){
+        //     if(moment.moment_al_jocului()){
+        //         operator<<(std::cout, scor);
+        //         suprafata.resetare_suprafata();
+        //         suprafata.suprafata_noua();
+        //         operator<<(std::cout, suprafata);
+        //     }else{
+        //         continua();
+        //     }
+        // }else continua();
+
+        continuare_meci_incheiat();
+        // if(verificare_meci_incheiat()){}
+        // else if(verificare_egalitate4()){
+        //     egalitate4();
+        //     continua();
+        // }else{
+        // continua();
+        // }
+    }
+}
+
+void Joc::continuare_moment_lupta(){
+    if(verificare_moment_lupta()){
             if(moment.moment_al_jocului()){
                 operator<<(std::cout, scor);
                 suprafata.resetare_suprafata();
@@ -92,15 +120,15 @@ void Joc::continua(){
                 continua();
             }
         }else continua();
+}
 
-        if(verificare_meci_incheiat()){
-        }
-        else if(verificare_egalitate4()){
-            egalitate4();
-            continua();
-        }else{
+void Joc::continuare_meci_incheiat(){
+    if(verificare_meci_incheiat()){}
+    else if(verificare_egalitate4()){
+        egalitate4();
         continua();
-        }
+    }else{
+    continua();
     }
 }
 

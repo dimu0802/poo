@@ -14,6 +14,8 @@ private:
     Suprafata suprafata;
     Scor scor;
     Lupta moment;
+    void continuare_moment_lupta();
+    void continuare_meci_incheiat();
     bool verificare_moment_lupta();
     bool verificare_meci_incheiat();
     bool verificare_egalitate4();
