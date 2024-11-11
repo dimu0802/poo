@@ -44,3 +44,4 @@ bool Lupta::moment_al_jocului() {
 
     return (actiune1 == 2 && actiune2 == 2) ? false : true;
 }
+

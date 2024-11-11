@@ -16,6 +16,7 @@ public:
     bool moment_al_jocului();
     void proceseaza_actiuni_egale(int actiune);
     void proceseaza_actiuni_diferite(int actiune1, int actiune2);
+    
 };
 
 #endif
