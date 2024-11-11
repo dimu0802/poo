@@ -22,15 +22,13 @@ void Joc::continua(){
         std::cout<<suprafata;
         continuare_moment_lupta();
         continuare_meci_incheiat();
-    }
-    else if(p1.verificare_pozitie_capat() && p2.verificare_pozitie_capat()){
+    }else if(p1.verificare_pozitie_capat() && p2.verificare_pozitie_capat()){
         std::cout<<"Ambii jucatori vor avansa o pozitie automat, deoarece sunt la capatul plansei\n";
         p1.avanseaza_o_pozitie();
         p2.se_retrage_o_pozitie();
         suprafata.suprafata_noua();
         std::cout<<suprafata;
-    }
-    else if(p1.verificare_pozitie_capat()){
+    }else if(p1.verificare_pozitie_capat()){
         std::cout<<"Jucatorul p1 va fi mutat automat o pozitie inainte, deoarece este la capat\n";
         p1.avanseaza_o_pozitie();
         std::cout<<"Jucatorul p2: ";
@@ -39,15 +37,12 @@ void Joc::continua(){
         std::cout<<suprafata;
         continuare_moment_lupta();    
         continuare_meci_incheiat();
-    }
-    
-    else if(p2.verificare_pozitie_capat()){
+    }else if(p2.verificare_pozitie_capat()){
         std::cout<<"Jucatorul p2 va fi mutat automat o pozitie inapoi, deoarece este la capat\n";
         std::cout<<"Jucatorul p1: ";
         p1.alegere_mutare();
         suprafata.suprafata_noua();
         std::cout<<suprafata;
-
         continuare_moment_lupta();   
         continuare_meci_incheiat();
     }
@@ -73,9 +68,7 @@ void Joc::continuare_meci_incheiat(){
     else if(verificare_egalitate4()){
         egalitate4();
         continua();
-    }else{
-    continua();
-    }
+    }else continua();
 }
 
 bool Joc:: verificare_moment_lupta(){

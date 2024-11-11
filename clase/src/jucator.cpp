@@ -10,9 +10,13 @@ Jucator::Jucator(const Jucator& other)
 }
 
 void Jucator::alegere_mutare(){
-    std::cout<<"Alegeti in ce directie muti? [1-Inapoi(spre suprafata[0]] [2-Inainte(spre suprafata[11])]\n";
+    std::cout<<"Alegeti in ce directie muti? ([1-Inapoi(spre suprafata[0]] [2-Inainte(spre suprafata[11])]\n";
     int mutare;
     std::cin>>mutare;
+    while(mutare!=1 && mutare!=2){
+        std::cout<<"Mutarile posinile sunt: ([1-Inapoi(spre suprafata[0]] [2-Inainte(spre suprafata[11]). Alegeti numarul corespunzator mutarii dorite: \n";
+        std::cin>>mutare;
+    }
     if(mutare==2){
         avanseaza_o_pozitie();
     }else if(mutare==1){
@@ -40,6 +44,10 @@ int Jucator::alege_actiune(){
     std::cout<<"Alege actiunea dorita(ATAC[1], OCOLIRE DE PARADA[2], PARADA[3]: \n";
     int actiune_aleasa;
     std::cin>>actiune_aleasa;
+    while(actiune_aleasa!=1 && actiune_aleasa!=2 && actiune_aleasa!=3){
+        std::cout<<"Actiunea aleasa trebuie sa fie: ATAC[1], OCOLIRE DE PARADA[2], PARADA[3]. Alegeti un numar intre 1 si 3: \n";
+        std::cin>>actiune_aleasa;
+    }
     return actiune_aleasa;
 }
 
