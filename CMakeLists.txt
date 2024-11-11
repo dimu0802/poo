@@ -14,7 +14,6 @@ set(SRC_FILES
     clase/src/joc.cpp
     clase/src/jucator.cpp
     clase/src/lupta.cpp
-    clase/src/scor.cpp
     clase/src/suprafata.cpp
 )
 

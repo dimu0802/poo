@@ -5,7 +5,6 @@
 #include "jucator.h"
 #include "lupta.h"
 #include "suprafata.h"
-#include "scor.h"
 
 
 

@@ -4,7 +4,6 @@
 #include "jucator.h"
 #include "lupta.h"
 #include "suprafata.h"
-#include "scor.h"
 
 
 class Joc{
@@ -12,7 +11,6 @@ private:
     Jucator p1;
     Jucator p2;
     Suprafata suprafata;
-    Scor scor;
     Lupta moment;
     void continuare_moment_lupta();
     void continuare_meci_incheiat();
