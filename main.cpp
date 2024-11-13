@@ -22,6 +22,13 @@ int main(){
              <<"\nMutari posibile: INAINTE: tasta 1; si INAPOI: tasta 2.\n"
              <<"In momentul in care jucatorii ajung unul langa celalalt, urmeaza un moment de lupta.\n"
              <<"Actiuni posibile: ATAC: tasta 1; OCOLIRE: tasta 2; PARADA: tasta 3\n\n"
+             <<"Situatii posibile:\n"
+             <<"1) ATAC-ATAC: puncteaza ambii"
+             <<"2) OCOLIRE-OCOLIRE: puncteaza ambii"
+             <<"3) PARADA-PARADA: ambii se retrag"
+             <<"4) ATAC-PARADA: puncteaza PARADA"
+             <<"5) ATAC-OCOLIRE: puncteaza ATAC"
+             <<"6) OCOLIRE-PARADA: puncteaza OCOLIRE"
              <<"===================================\n";
     Joc joc("Jucator 1", "Jucator 2", 4, 7);
     joc.start();
