@@ -8,7 +8,7 @@ Joc::Joc(const std::string& nume1, const std::string& nume2, int pozitie1, int p
 void Joc::start(){
     std::cout<<"\n";
     std::cout<<"Incepe jocul! Mult succes ambilor jucatori!\n\n";
-    std::cout<<"*********************************************************\n";
+    std::cout<<"===================================\n";
     suprafata.suprafata_noua();
     std::cout<<suprafata;
     continua();  
