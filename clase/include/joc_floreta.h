@@ -10,6 +10,7 @@ public:
     explicit Joc_Floreta(const Joc& joc);
 
     void start() override;
+    std::unique_ptr<Joc> clone() const override;
 
     void proceseaza_actiuni_egale();
     void proceseaza_actiuni_diferite(int actiune1, int actiune2) override;

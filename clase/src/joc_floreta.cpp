@@ -7,6 +7,10 @@ Joc_Floreta::Joc_Floreta(const std::string& nume1, const std::string& nume2)
 Joc_Floreta::Joc_Floreta(const Joc& joc)
     : Joc(joc.p1.get_nume(), joc.p2.get_nume(), joc.p1.pozitie_actuala(), joc.p2.pozitie_actuala()){}
 
+std::unique_ptr<Joc> Joc_Floreta::clone() const{
+    return std::make_unique<Joc_Floreta>(*this);
+}
+
 void Joc_Floreta::start(){
     std::cout << "\nIncepe jocul de floreta! Mult succes ambilor jucatori!\n\n";
     suprafata.suprafata_noua();
