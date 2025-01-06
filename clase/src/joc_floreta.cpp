@@ -31,8 +31,8 @@ void Joc_Floreta::proceseaza_actiuni_egale(){
 
 
 void Joc_Floreta::proceseaza_actiuni_diferite(int actiune1, int actiune2){
-    int pozitie_initiala_p1=p1.pozitie_actuala();
-    int pozitie_initiala_p2=p2.pozitie_actuala();
+    int pozitie_p1_actuala = p1.pozitie_actuala();
+    int pozitie_p2_actuala = p2.pozitie_actuala();
 
     if((actiune1==atac && actiune2==parada) || (actiune1 == ocolire && actiune2 == atac) || (actiune1 == parada && actiune2 == ocolire)) {
         std::cout<<p2.get_nume()<<" are prioritate si loveste!\n";
