@@ -1,6 +1,9 @@
 #include <iostream>
 #include "../include/joc.h"
 
+const int Joc::scor_maxim=5;
+const int Joc::pozitie_initiala_p1=4;
+const int Joc::pozitie_initiala_p2=7;
 
 Joc::Joc(const std::string& nume1, const std::string& nume2, int pozitie1, int pozitie2, int puncte1, int puncte2)
     :p1(nume1, pozitie1, puncte1), p2(nume2, pozitie2, puncte2), suprafata(p1, p2){}
