@@ -19,6 +19,7 @@ public:
     Joc(const std::string& nume1, const std::string& nume2, int pozitie1, int pozitie2, int puncte1=0, int puncte2=0);
     virtual ~Joc() = default;
 
+    virtual std::unique_ptr<Joc> clone() const=0;
     virtual void start();
     void continua();
 
