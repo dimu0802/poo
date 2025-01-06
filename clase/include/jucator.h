@@ -29,10 +29,10 @@ public:
     void actualizeaza_pozitie(int pozitie_dorita);
     int alege_actiune();
     void primeste_un_punct();
-    void scade_un_punct();
+    //void scade_un_punct();
     int scor_actual();
     int pozitie_actuala() const;
-    std::string get_nume() const; 
+    const std::string& get_nume() const; 
     void revenire_pozitie_initiala(int pozitie_initiala);
     friend std::ostream& operator<<(std::ostream& os, const Jucator& player){
             os<<"Jucator: "<<player.nume<<", pozitie: "<<player.pozitie<<", numar de puncte: "<<player.numar_puncte<<"\n";

@@ -14,6 +14,7 @@ class Lobby {
     int arma_aleasa;
     std::unique_ptr<Joc> joc_actual;
 public:
+    Lobby() : nume1(""), nume2(""), arma_aleasa(0), joc_actual(nullptr){}
     void start_joc(const std::string& reguli_floreta, const std::string& reguli_sabie, const std::string& reguli_spada);
     void alegere_arma(const std::string& reguli_floreta, const std::string& reguli_sabie, const std::string& reguli_spada);
     void nume_jucatori();

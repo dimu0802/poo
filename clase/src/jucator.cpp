@@ -70,7 +70,10 @@ void Jucator::primeste_un_punct(){
 
 int Jucator::scor_actual(){return numar_puncte;}
 int Jucator::pozitie_actuala() const{return pozitie;}
-std::string Jucator::get_nume() const{return nume;}
+const std::string& Jucator::get_nume() const {
+    return nume;
+}
+
 
 void Jucator::revenire_pozitie_initiala(int pozitie_initiala){
     pozitie=pozitie_initiala;
