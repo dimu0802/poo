@@ -8,6 +8,12 @@ void Lobby::start_joc(const std::string& reguli_floreta, const std::string& regu
     nume_jucatori();
     std::cout<<"\nAcum ca stim numele adversarilor, sa alegem arma cu care va veti confrunta";
     alegere_arma(reguli_floreta, reguli_sabie, reguli_spada);
+
+    if (joc_actual){
+        std::cout << "Se creează o copie a jocului curent...\n";
+        auto copie_joc = joc_actual->clone();
+        std::cout << "Copia jocului a fost creată cu succes!\n";
+    }
 }
 
 void Lobby::nume_jucatori(){
