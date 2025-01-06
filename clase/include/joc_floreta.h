@@ -4,10 +4,10 @@
 #include "joc.h"
 #include <memory>
 
-class Joc_Floreta : public Joc {
+class Joc_Floreta:public Joc{
 public:
     Joc_Floreta(const std::string& nume1, const std::string& nume2);
-    Joc_Floreta(const Joc& joc);
+    explicit Joc_Floreta(const Joc& joc);
 
     void start() override;
     std::unique_ptr<Joc> clone() const override;

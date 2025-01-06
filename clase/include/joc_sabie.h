@@ -3,10 +3,10 @@
 
 #include "joc.h"
 
-class Joc_Sabie : public Joc {
+class Joc_Sabie:public Joc{
 public:
     Joc_Sabie(const std::string& nume1, const std::string& nume2);
-    Joc_Sabie(const Joc& joc);
+    explicit Joc_Sabie(const Joc& joc);
 
     std::unique_ptr<Joc> clone() const override;
 

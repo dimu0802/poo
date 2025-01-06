@@ -17,30 +17,36 @@ void Joc::start(){
 }
 
 void Joc::continua(){
-    if (!p1.verificare_pozitie_capat() && !p2.verificare_pozitie_capat()){
-        std::cout << p1.get_nume()<<": ";
-        p1.alegere_mutare();
-        std::cout << p2.get_nume()<<": ";
-        p2.alegere_mutare();
+    while(true){
+        if (!p1.verificare_pozitie_capat() && !p2.verificare_pozitie_capat()){
+            std::cout << p1.get_nume()<<": ";
+            p1.alegere_mutare();
+            std::cout << p2.get_nume()<<": ";
+            p2.alegere_mutare();
 
-        suprafata.suprafata_noua();
-        std::cout << suprafata;
+            suprafata.suprafata_noua();
+            std::cout << suprafata;
 
-        if (verificare_moment_lupta()){
-            continuare_moment_lupta();
-        }else{
+            if (verificare_moment_lupta()){
+                continuare_moment_lupta();
+            }else{
+                continua();
+            }
+
+        }else if(p1.verificare_pozitie_capat() && p2.verificare_pozitie_capat()){
+            std::cout<<"Ambii jucatori vor avansa o pozitie automat, deoarece sunt la capatul plansei\n";
+            p1.avanseaza_o_pozitie();
+            p2.se_retrage_o_pozitie();
+            suprafata.suprafata_noua();
+            std::cout<<suprafata;
             continua();
+        }else{
+            jucator_la_capat();
         }
 
-    }else if(p1.verificare_pozitie_capat() && p2.verificare_pozitie_capat()){
-        std::cout<<"Ambii jucatori vor avansa o pozitie automat, deoarece sunt la capatul plansei\n";
-        p1.avanseaza_o_pozitie();
-        p2.se_retrage_o_pozitie();
-        suprafata.suprafata_noua();
-        std::cout<<suprafata;
-        continua();
-    }else{
-        jucator_la_capat();
+        if(verificare_meci_incheiat()){
+            break;
+        }
     }
 }
 

@@ -23,8 +23,8 @@ void Joc_Sabie::proceseaza_actiuni_egale(){
 }
 
 void Joc_Sabie::proceseaza_actiuni_diferite(int actiune1, int actiune2){
-    int pozitie_p1_actuala = p1.pozitie_actuala();
-    int pozitie_p2_actuala = p2.pozitie_actuala();
+    // int pozitie_p1_actuala = p1.pozitie_actuala();
+    // int pozitie_p2_actuala = p2.pozitie_actuala();
 
     if ((actiune1==atac && actiune2==parada) ||
         (actiune1==ocolire && actiune2==atac) ||
