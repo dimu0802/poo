@@ -13,17 +13,6 @@
 
 int main() {
 
-    
-    try {
-        std::cout<<"\nTest pentru metoda clone() în Joc_Sabie:\n";
-        std::unique_ptr<Joc> joc_sabie=std::make_unique<Joc_Sabie>("Jucator1", "Jucator2");
-        std::unique_ptr<Joc> copie_joc=joc_sabie->clone();
-        std::cout<<"Copia jocului este de tip: "<<typeid(*copie_joc.get()).name() << "\n";
-
-     } catch (const std::exception& ex){
-        std::cerr<<"Eroare: "<<ex.what()<<std::endl;
-    }
-
     try {
         std::cout << "\n\n===================================\n"
                   << "FENCING DUEL-OLYMPIC GLORY\n"
