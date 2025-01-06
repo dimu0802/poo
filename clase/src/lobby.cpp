@@ -34,7 +34,7 @@ void Lobby::alegere_arma(const std::string &reguli_floreta, const std::string &r
     }else if(arma_aleasa==2) {
         afisare_reguli(reguli_sabie);
         joc_actual=std::make_unique<Joc_Sabie>(nume1, nume2);
-    }else if(arma_aleasa==3){
+    }else{
         afisare_reguli(reguli_spada);
         joc_actual=std::make_unique<Joc_Spada>(nume1, nume2);
     }

@@ -11,27 +11,37 @@ std::unique_ptr<Joc> Joc_Spada::clone() const{
     return std::make_unique<Joc_Spada>(*this);
 }
 
-void Joc_Spada::proceseaza_actiuni_egale(int actiune) {
-    if (actiune == atac || actiune == ocolire) {
-        std::cout << "Ambii jucatori au punctat!\n";
-        p1.primeste_un_punct();
-        p2.primeste_un_punct();
-    } else {
-        std::cout << "Ambii jucatori au parat! Fiecare se retrage o pozitie.\n";
-        p1.se_retrage_o_pozitie();
-        p2.se_retrage_o_pozitie();
+void Joc_Spada::proceseaza_actiuni_egale(int actiune){
+    if(p1.scor_actual()==4 && p2.scor_actual()==4){
+        std::cout<<"Egalitate la 4-4! Se aplica regula speciala pentru spada.\n";
+        if(actiune== atac||actiune==ocolire){
+            std::cout<<"Lovitura dubla! Se scade un punct de la fiecare jucator.\n";
+        }else{
+            std::cout << "Ambii jucatori au parat! Faza se repeta.\n";
+        }
+    }else{
+        if(actiune==atac||actiune==ocolire){
+            std::cout<<"Ambii jucatori au punctat!\n";
+            p1.primeste_un_punct();
+            p2.primeste_un_punct();
+        }else{
+            std::cout<<"Ambii jucatori au parat! Fiecare se retrage o pozitie.\n";
+            p1.se_retrage_o_pozitie();
+            p2.se_retrage_o_pozitie();
+        }
     }
     suprafata.suprafata_noua();
 }
 
-void Joc_Spada::proceseaza_actiuni_diferite(int actiune1, int actiune2) {
-    if ((actiune1 == atac && actiune2 == parada) || 
-        (actiune1 == ocolire && actiune2 == atac) || 
-        (actiune1 == parada && actiune2 == ocolire)) {
-        std::cout << p2.get_nume()<<" are prioritate si puncteaza!\n";
+
+void Joc_Spada::proceseaza_actiuni_diferite(int actiune1, int actiune2){
+    if ((actiune1==atac && actiune2==parada) || 
+        (actiune1==ocolire && actiune2==atac) || 
+        (actiune1==parada && actiune2==ocolire)) {
+        std::cout<<p2.get_nume()<<" are prioritate si puncteaza!\n";
         p2.primeste_un_punct();
     } else {
-        std::cout <<p1.get_nume()<< " are prioritate si puncteaza!\n";
+        std::cout<<p1.get_nume()<< " are prioritate si puncteaza!\n";
         p1.primeste_un_punct();
     }
     suprafata.suprafata_noua();
@@ -55,3 +65,5 @@ bool Joc_Spada::moment_al_jocului(){
     }
     return true;
 }
+
+

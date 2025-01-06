@@ -36,10 +36,8 @@ void Joc::continua(){
         std::cout<<"Ambii jucatori vor avansa o pozitie automat, deoarece sunt la capatul plansei\n";
         p1.avanseaza_o_pozitie();
         p2.se_retrage_o_pozitie();
-
         suprafata.suprafata_noua();
         std::cout<<suprafata;
-
         continua();
     }else{
         jucator_la_capat();
@@ -53,7 +51,7 @@ void Joc::jucator_la_capat(){
         p1.avanseaza_o_pozitie();
         std::cout<<p2.get_nume()<<": ";
         p2.alegere_mutare();
-    } else if (p2.verificare_pozitie_capat()){
+    }else if(p2.verificare_pozitie_capat()){
         std::cout<<"Jucatorul p2 va fi mutat automat o pozitie inapoi, deoarece este la capat\n";
         p2.se_retrage_o_pozitie();
         std::cout<<p1.get_nume()<<": ";
@@ -69,22 +67,6 @@ void Joc::jucator_la_capat(){
     }
 }
 
-void Joc::continuare_moment_lupta(){
-    if (moment_al_jocului()){
-        int puncte1=p1.scor_actual();
-        int puncte2=p2.scor_actual();
-        std::cout<<"Scorul este: " <<puncte1<<"-"<<puncte2<<"\n";
-
-        if (verificare_meci_incheiat()){
-            return;
-        }
-        suprafata.resetare_suprafata();
-        suprafata.suprafata_noua();
-        std::cout<<suprafata;
-    }
-    continua();
-}
-
 bool Joc::verificare_meci_incheiat(){
     if (p1.scor_actual()==5 && p2.scor_actual()!=5){
         std::cout<<"Felicitari! "<< p1.get_nume()<<" castiga Aurul!\n";
@@ -95,7 +77,6 @@ bool Joc::verificare_meci_incheiat(){
     }
     return false;
 }
-
 
 bool Joc::verificare_moment_lupta(){
     return abs(p1.pozitie_actuala()-p2.pozitie_actuala())==1;
