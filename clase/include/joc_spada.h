@@ -8,7 +8,6 @@ public:
     Joc_Spada(const std::string& nume1, const std::string& nume2);
     explicit Joc_Spada(const Joc& joc);
 
-    std::unique_ptr<Joc> clone() const override;
 
     void proceseaza_actiuni_egale(int actiune);
     void proceseaza_actiuni_diferite(int actiune1, int actiune2) override;

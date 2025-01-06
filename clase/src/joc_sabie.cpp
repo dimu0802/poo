@@ -7,10 +7,6 @@ Joc_Sabie::Joc_Sabie(const std::string& nume1, const std::string& nume2)
 Joc_Sabie::Joc_Sabie(const Joc& joc)
     : Joc(joc.p1.get_nume(), joc.p2.get_nume(), joc.p1.pozitie_actuala(), joc.p2.pozitie_actuala()){}
 
-std::unique_ptr<Joc> Joc_Sabie::clone()const{
-    return std::make_unique<Joc_Sabie>(*this);
-}
-
 void Joc_Sabie::proceseaza_actiuni_egale(){
     std::cout<<"Ambii jucatori au ales aceeasi actiune. Nu se acorda puncte si se revin la pozitiile anterioare.\n";
     int pozitie_anterioara_p1=p1.pozitie_actuala()-1;

@@ -7,10 +7,6 @@ Joc_Spada::Joc_Spada(const std::string& nume1, const std::string& nume2)
 Joc_Spada::Joc_Spada(const Joc& joc)
     : Joc(joc.p1.get_nume(), joc.p2.get_nume(), joc.p1.pozitie_actuala(), joc.p2.pozitie_actuala()){}
 
-std::unique_ptr<Joc> Joc_Spada::clone() const{
-    return std::make_unique<Joc_Spada>(*this);
-}
-
 void Joc_Spada::proceseaza_actiuni_egale(int actiune){
     if(p1.scor_actual()==4 && p2.scor_actual()==4){
         std::cout<<"Egalitate la 4-4! Se aplica regula speciala pentru spada.\n";
