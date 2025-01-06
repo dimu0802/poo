@@ -1,120 +1,125 @@
 #include <iostream>
 #include "../include/joc.h"
 
+const int Joc::scor_maxim=5;
+const int Joc::pozitie_initiala_p1=4;
+const int Joc::pozitie_initiala_p2=7;
+
 Joc::Joc(const std::string& nume1, const std::string& nume2, int pozitie1, int pozitie2, int puncte1, int puncte2)
-    : p1(nume1, pozitie1, puncte1), p2(nume2, pozitie2, puncte2),
-       suprafata(p1, p2), moment(p1, p2, suprafata) {}
+    :p1(nume1, pozitie1, puncte1), p2(nume2, pozitie2, puncte2), suprafata(p1, p2){}
 
 void Joc::start(){
-    std::cout<<"\n";
-    std::cout<<"Incepe jocul! Mult succes ambilor jucatori!\n\n";
+    std::cout<<"\nIncepe jocul! Mult succes ambilor jucatori!\n\n";
     std::cout<<"===================================\n";
     suprafata.suprafata_noua();
     std::cout<<suprafata;
-    continua();  
+    continua();
 }
+
 void Joc::continua(){
-    if(!p1.verificare_pozitie_capat() && !p2.verificare_pozitie_capat()){
-        std::cout<<"Jucatorul p1: ";
+    if (!p1.verificare_pozitie_capat() && !p2.verificare_pozitie_capat()){
+        std::cout << p1.get_nume()<<": ";
         p1.alegere_mutare();
-        std::cout<<"Jucatorul p2: ";
+        std::cout << p2.get_nume()<<": ";
         p2.alegere_mutare();
+
         suprafata.suprafata_noua();
-        std::cout<<suprafata;
-        continuare_moment_lupta();
-        continuare_meci_incheiat();
+        std::cout << suprafata;
+
+        if (verificare_moment_lupta()){
+            continuare_moment_lupta();
+        }else{
+            continua();
+        }
+
     }else if(p1.verificare_pozitie_capat() && p2.verificare_pozitie_capat()){
         std::cout<<"Ambii jucatori vor avansa o pozitie automat, deoarece sunt la capatul plansei\n";
         p1.avanseaza_o_pozitie();
         p2.se_retrage_o_pozitie();
+
         suprafata.suprafata_noua();
         std::cout<<suprafata;
-    }else if(p1.verificare_pozitie_capat() || p2.verificare_pozitie_capat()){
+
+        continua();
+    }else{
         jucator_la_capat();
     }
 }
 
+
 void Joc::jucator_la_capat(){
-    if(p1.verificare_pozitie_capat()){
+    if (p1.verificare_pozitie_capat()){
         std::cout<<"Jucatorul p1 va fi mutat automat o pozitie inainte, deoarece este la capat\n";
         p1.avanseaza_o_pozitie();
-        std::cout<<"Jucatorul p2: ";
+        std::cout<<p2.get_nume()<<": ";
         p2.alegere_mutare();
-    }else if(p2.verificare_pozitie_capat()){
+    } else if (p2.verificare_pozitie_capat()){
         std::cout<<"Jucatorul p2 va fi mutat automat o pozitie inapoi, deoarece este la capat\n";
-        p2.avanseaza_o_pozitie();
-        std::cout<<"Jucatorul p1: ";
+        p2.se_retrage_o_pozitie();
+        std::cout<<p1.get_nume()<<": ";
         p1.alegere_mutare();
     }
     suprafata.suprafata_noua();
     std::cout<<suprafata;
-    continuare_moment_lupta();   
-    continuare_meci_incheiat();
-}
 
+    if (verificare_moment_lupta()){
+        continuare_moment_lupta();
+    }else{
+        continua();
+    }
+}
 
 void Joc::continuare_moment_lupta(){
-    if(verificare_moment_lupta()){
-            if(moment.moment_al_jocului()){
-                int puncte1=p1.scor_actual();
-                int puncte2=p2.scor_actual();
-                std::cout<<"Scorul este: "<<puncte1<<"-"<<puncte2<<"\n";
-                suprafata.resetare_suprafata();
-                suprafata.suprafata_noua();
-                operator<<(std::cout, suprafata);
-            }else{
-                continua();
-            }
-    }else continua();
-}
+    if (moment_al_jocului()){
+        int puncte1=p1.scor_actual();
+        int puncte2=p2.scor_actual();
+        std::cout<<"Scorul este: " <<puncte1<<"-"<<puncte2<<"\n";
 
-void Joc::continuare_meci_incheiat(){
-    if(verificare_meci_incheiat()){}
-    else if(verificare_egalitate4()){
-        egalitate4();
-        continua();
-    }else continua();
-}
-
-bool Joc:: verificare_moment_lupta(){
-    int poz1=p1.pozitie_actuala();
-    int poz2=p2.pozitie_actuala();
-    if(poz2-poz1==1){
-        return true;
-    }else return false;
+        if (verificare_meci_incheiat()){
+            return;
+        }
+        suprafata.resetare_suprafata();
+        suprafata.suprafata_noua();
+        std::cout<<suprafata;
+    }
+    continua();
 }
 
 bool Joc::verificare_meci_incheiat(){
-    int puncte1=p1.scor_actual();
-    int puncte2=p2.scor_actual();
-    if((puncte1==5 && puncte2!=5) || (puncte2==5 && puncte1!=5)){
-        if(puncte1==5){
-        std::cout<<"Felicitari! Jucatorul 1 castiga Aurul!\n";
-        }else{
-            std::cout<<"Felicitari! Jucatorul 2 castiga Aurul!\n";
-        }
+    if (p1.scor_actual()==5 && p2.scor_actual()!=5){
+        std::cout<<"Felicitari! "<< p1.get_nume()<<" castiga Aurul!\n";
         return true;
-    }else return false;
-}
-
-bool Joc::verificare_egalitate4(){
-    int puncte1=p1.scor_actual();
-    int puncte2=p2.scor_actual();
-    if(puncte1==5 && puncte2==5){
+    }else if(p2.scor_actual()==5 && p1.scor_actual()!=5){
+        std::cout<<"Felicitari! "<< p2.get_nume()<<" castiga Aurul!\n";
         return true;
-    }else return false;
-}
-
-void Joc::egalitate4(){
-    int puncte1=p1.scor_actual();
-    int puncte2=p2.scor_actual();
-    if(puncte1==5 && puncte2==5){
-        std::cout<<"Scorul este 5-5. Se scoate cate o tusa de la fiecare jucator. \nVom juca pana cand unul dintre jucatori puncteaza o lovitura simpla.\nScorul este 4-4\n\n";
     }
-    p1.scade_un_punct();
-    p2.scade_un_punct();
-    suprafata.suprafata_noua();
-    operator<<(std::cout, suprafata);
+    return false;
 }
 
 
+bool Joc::verificare_moment_lupta(){
+    return abs(p1.pozitie_actuala()-p2.pozitie_actuala())==1;
+}
+
+void Joc::afisare_tinta(){    
+        std::cout << "\n"
+        << "                  _______                 \n"
+        << "                 /       \\               \n"
+        << "                |         |               \n"
+        << "                |    x1   |               \n"
+        << "                 \\__   __/              \n"
+        << "          __________| |_________         \n"
+        << "         |                      |        \n"
+        << "        / /|                  |\\ \\     \n"
+        << "  x2-->/ / |      x3          | \\ \\    \n"
+        << "      / /  |                  |  \\ \\   \n"
+        << "    _/ /_  |                  |  _\\ \\_ \n"
+        << "   |     | |              x4  | |     |  \n"
+        << "   |_____| |__________________| |_____|  \n"
+        << "              |_|        |_|             \n"
+        << "              |_|        |_|<--x5        \n"
+        << "             /_/          \\_\\          \n"
+        << "            |_|            |_|           \n"
+        << "           _|_|            |_|_          \n"
+        << "          |___|            |___|<--x6    \n";
+}

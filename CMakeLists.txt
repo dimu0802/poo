@@ -13,8 +13,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(SRC_FILES
     clase/src/joc.cpp
     clase/src/jucator.cpp
-    clase/src/lupta.cpp
     clase/src/suprafata.cpp
+    clase/src/joc_sabie.cpp
+    clase/src/joc_floreta.cpp
+    clase/src/joc_spada.cpp
+    clase/src/lobby.cpp
 )
 
 include(cmake/Options.cmake)
@@ -83,4 +86,7 @@ endif()
 
 include(cmake/CopyHelper.cmake)
 copy_files(FILES tastatura.txt)
+copy_files(DIRECTORY reguli)
+
+
 # copy_files(DIRECTORY images sounds)
