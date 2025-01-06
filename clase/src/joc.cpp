@@ -44,6 +44,21 @@ void Joc::continua(){
     }
 }
 
+void Joc::continuare_moment_lupta(){
+    if (moment_al_jocului()){
+        int puncte1=p1.scor_actual();
+        int puncte2=p2.scor_actual();
+        std::cout<<"Scorul este: " <<puncte1<<"-"<<puncte2<<"\n";
+
+        if (verificare_meci_incheiat()){
+            return;
+        }
+        suprafata.resetare_suprafata();
+        suprafata.suprafata_noua();
+        std::cout<<suprafata;
+    }
+    continua();
+}
 
 void Joc::jucator_la_capat(){
     if (p1.verificare_pozitie_capat()){
