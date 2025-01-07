@@ -10,4 +10,5 @@ constexpr int atac=1;
 constexpr int ocolire=2;
 constexpr int parada=3;
 
+
 #endif
