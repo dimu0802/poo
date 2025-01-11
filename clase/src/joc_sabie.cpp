@@ -11,17 +11,6 @@ std::unique_ptr<Joc> Joc_Sabie::clone()const{
     return std::make_unique<Joc_Sabie>(*this);
 }
 
-void Joc_Sabie::proceseaza_actiuni_egale(){
-    std::cout<<"Ambii jucatori au ales aceeasi actiune. Nu se acorda puncte si se revin la pozitiile anterioare.\n";
-    int pozitie_anterioara_p1=p1.pozitie_actuala()-1;
-    int pozitie_anterioara_p2=p2.pozitie_actuala()+1;
-    p1.revenire_pozitie_initiala(pozitie_anterioara_p1);
-    p2.revenire_pozitie_initiala(pozitie_anterioara_p2);
-
-    suprafata.suprafata_noua();
-    std::cout<<suprafata;
-}
-
 void Joc_Sabie::proceseaza_actiuni_diferite(int actiune1, int actiune2){
     // int pozitie_p1_actuala = p1.pozitie_actuala();
     // int pozitie_p2_actuala = p2.pozitie_actuala();
@@ -65,6 +54,10 @@ void Joc_Sabie::proceseaza_actiuni_diferite(int actiune1, int actiune2){
 
 bool Joc_Sabie::validare_lovitura(int punct_lovitura){
     return (punct_lovitura >= 1 && punct_lovitura <= 4);
+}
+
+void Joc_Sabie::proceseaza_actiuni_egale() {
+    proceseaza_actiuni_egale_comune();
 }
 
 bool Joc_Sabie::moment_al_jocului(){

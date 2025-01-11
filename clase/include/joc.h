@@ -23,6 +23,8 @@ public:
     virtual void start();
     void continua();
 
+    virtual void proceseaza_actiuni_egale()=0;
+
 protected:
     void jucator_la_capat();
     void continuare_moment_lupta();
@@ -34,6 +36,8 @@ protected:
     virtual void proceseaza_actiuni_diferite(int actiune1, int actiune2)=0;
     virtual bool moment_al_jocului()=0;
     virtual bool validare_lovitura(int punct_lovitura)=0;
+
+    void proceseaza_actiuni_egale_comune();
 };
 
 #endif

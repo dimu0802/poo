@@ -19,16 +19,8 @@ void Joc_Floreta::start(){
 }
 
 void Joc_Floreta::proceseaza_actiuni_egale(){
-    std::cout<<"Ambii jucatori au ales aceeasi actiune. Nu se acorda puncte si se revin la pozitiile anterioare.\n";
-    int pozitie_anterioara_p1=p1.pozitie_actuala()-1;
-    int pozitie_anterioara_p2=p2.pozitie_actuala()+1;
-    p1.revenire_pozitie_initiala(pozitie_anterioara_p1);
-    p2.revenire_pozitie_initiala(pozitie_anterioara_p2);
-
-    suprafata.suprafata_noua();
-    std::cout<<suprafata;
+    proceseaza_actiuni_egale_comune();
 }
-
 
 void Joc_Floreta::proceseaza_actiuni_diferite(int actiune1, int actiune2){
     // int pozitie_p1_actuala = p1.pozitie_actuala();
@@ -44,20 +36,20 @@ void Joc_Floreta::proceseaza_actiuni_diferite(int actiune1, int actiune2){
         if(validare_lovitura(punct_lovitura)) {
             std::cout << "Lovitura este valabila! "<< p2.get_nume()<<" puncteaza!\n";
             p2.primeste_un_punct();
-        } else {
+        }else{
             std::cout << "Lovitura este invalida! Jucatorii revin la pozitiile anterioare.\n";
             p1.revenire_pozitie_initiala(pozitie_initiala_p1);
             p2.revenire_pozitie_initiala(pozitie_initiala_p2);
         }
-    } else {
+    }else{
         std::cout<<p1.get_nume()<<" are prioritate si loveste!\n";
         afisare_tinta();
         std::cout<<p1.get_nume()<<": Alege punctul unde lovesti (1-6): ";
         int punct_lovitura;
         std::cin >> punct_lovitura;
 
-        if (validare_lovitura(punct_lovitura)) {
-            std::cout << "Lovitura este valabila! "<< p1.get_nume()<<" puncteaza!\n";
+        if (validare_lovitura(punct_lovitura)){
+            std::cout<<"Lovitura este valabila! "<< p1.get_nume()<<" puncteaza!\n";
             p1.primeste_un_punct();
         }else{
             std::cout << "Lovitura este invalida! Jucatorii revin la pozitiile anterioare.\n";
@@ -66,7 +58,7 @@ void Joc_Floreta::proceseaza_actiuni_diferite(int actiune1, int actiune2){
         }
     }
     suprafata.suprafata_noua();
-    std::cout << suprafata;
+    std::cout<<suprafata;
 }
 
 

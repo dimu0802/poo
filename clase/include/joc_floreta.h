@@ -11,11 +11,12 @@ public:
 
     void start() override;
     std::unique_ptr<Joc> clone() const override;
-
-    void proceseaza_actiuni_egale();
+    
     void proceseaza_actiuni_diferite(int actiune1, int actiune2) override;
     bool validare_lovitura(int punct_lovitura) override;
     bool moment_al_jocului() override;
+
+    void proceseaza_actiuni_egale() override;
 };
 
 #endif

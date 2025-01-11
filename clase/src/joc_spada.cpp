@@ -11,7 +11,20 @@ std::unique_ptr<Joc> Joc_Spada::clone() const{
     return std::make_unique<Joc_Spada>(*this);
 }
 
-void Joc_Spada::proceseaza_actiuni_egale(int actiune){
+void Joc_Spada::proceseaza_actiuni_egale() {
+    std::cout << "Ambii jucători au ales aceeași acțiune! Unul dintre jucatori sa mai introduca acțiunea (1 - atac, 2 - ocolire, 3 - paradă):\n";
+    int actiune;
+    std::cin >> actiune;
+
+    if (actiune < 1 || actiune > 3) {
+        std::cout << "Acțiune invalidă! Reintrodu acțiunea corectă.\n";
+        return proceseaza_actiuni_egale();
+    }
+
+    proceseaza_actiuni_egale_spada(actiune);
+}
+
+void Joc_Spada::proceseaza_actiuni_egale_spada(int actiune){
     if(p1.scor_actual()==4 && p2.scor_actual()==4){
         std::cout<<"Egalitate la 4-4! Se aplica regula speciala pentru spada.\n";
         if(actiune== atac||actiune==ocolire){
@@ -59,7 +72,7 @@ bool Joc_Spada::moment_al_jocului(){
     int actiune2=p2.alege_actiune();
 
     if(actiune1==actiune2){
-        proceseaza_actiuni_egale(actiune1);
+        proceseaza_actiuni_egale();
     }else{
         proceseaza_actiuni_diferite(actiune1, actiune2);
     }

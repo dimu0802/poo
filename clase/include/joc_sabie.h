@@ -10,10 +10,12 @@ public:
 
     std::unique_ptr<Joc> clone() const override;
 
-    void proceseaza_actiuni_egale();
     void proceseaza_actiuni_diferite(int actiune1, int actiune2) override;
     bool moment_al_jocului() override;
     bool validare_lovitura(int punct_lovitura) override;
+
+    void proceseaza_actiuni_egale() override;
+
 };
 
 #endif

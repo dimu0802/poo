@@ -103,6 +103,18 @@ bool Joc::verificare_moment_lupta(){
     return abs(p1.pozitie_actuala()-p2.pozitie_actuala())==1;
 }
 
+void Joc::proceseaza_actiuni_egale_comune(){
+    std::cout << "Ambii jucători au ales aceeași acțiune. Nu se acordă puncte și se revin la pozițiile anterioare.\n";
+    int pozitie_anterioara_p1 = p1.pozitie_actuala() - 1;
+    int pozitie_anterioara_p2 = p2.pozitie_actuala() + 1;
+    p1.revenire_pozitie_initiala(pozitie_anterioara_p1);
+    p2.revenire_pozitie_initiala(pozitie_anterioara_p2);
+
+    suprafata.suprafata_noua();
+    std::cout << suprafata;
+}
+
+
 void Joc::afisare_tinta(){    
         std::cout << "\n"
         << "                  _______                 \n"
