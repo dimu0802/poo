@@ -1,11 +1,13 @@
 #ifndef LOBBY_H
 #define LOBBY_H
 #include "joc.h"
-#include "joc_floreta.h"
-#include "joc_sabie.h"
 #include "joc_spada.h"
 #include "constante.h"
 #include "exceptii.h"
+#include "joc_arma_conventionala.h"
+#include "reguli_arma.h"
+#include "reguli_floreta.h"
+#include "reguli_sabie.h"
 #include <memory>
 
 class Lobby {

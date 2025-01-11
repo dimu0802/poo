@@ -14,10 +14,11 @@ set(SRC_FILES
     clase/src/joc.cpp
     clase/src/jucator.cpp
     clase/src/suprafata.cpp
-    clase/src/joc_sabie.cpp
-    clase/src/joc_floreta.cpp
     clase/src/joc_spada.cpp
     clase/src/lobby.cpp
+    clase/src/joc_arma_conventionala.cpp
+    clase/src/reguli_floreta.cpp 
+    clase/src/reguli_sabie.cpp 
 )
 
 include(cmake/Options.cmake)

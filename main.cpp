@@ -7,10 +7,11 @@
 #include "jucator.h"
 #include "suprafata.h"
 #include "lobby.h"
-#include "joc_floreta.h"
-#include "joc_sabie.h"
 #include "joc_spada.h"
-//#include "joc_arma_conventionala.h"
+#include "joc_arma_conventionala.h"
+#include "reguli_arma.h"
+#include "reguli_floreta.h"
+#include "reguli_sabie.h"
 
 int main(){
 

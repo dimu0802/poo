@@ -2,25 +2,25 @@
 #include <memory>
 #include "../include/lobby.h"
 
-void Lobby::start_joc() {
+void Lobby::start_joc(){
     nume_jucatori();
-    std::cout << "\nAcum că știm numele adversarilor, să alegem arma cu care vă veți confrunta.\n";
+    std::cout<<"\nAcum că știm numele adversarilor, să alegem arma cu care vă veți confrunta.\n";
     alegere_arma();
 
     if (joc_actual){
         joc_actual->start();
-        std::cout << "Se creează o copie a jocului curent...\n";
-        auto copie_joc = joc_actual->clone();
-        std::cout << "Copia jocului a fost creată cu succes!\n";
+        std::cout<<"Se creează o copie a jocului curent...\n";
+        auto copie_joc=joc_actual->clone();
+        std::cout<<"Copia jocului a fost creată cu succes!\n";
     }
 }
 
 void Lobby::nume_jucatori(){
-    std::cout << "\nSportivi, alegeți-vă numele:\n";
-    std::cout << "Numele Jucătorului 1: ";
-    std::cin >> nume1;
-    std::cout << "Numele Jucătorului 2: ";
-    std::cin >> nume2;
+    std::cout<<"\nSportivi, alegeți-vă numele:\n";
+    std::cout<<"Numele Jucătorului 1: ";
+    std::cin>>nume1;
+    std::cout<<"Numele Jucătorului 2: ";
+    std::cin>>nume2;
 }
 
 void Lobby::alegere_arma() {
@@ -34,9 +34,11 @@ void Lobby::alegere_arma() {
     }
 
     if (arma_aleasa == 1) {
-        joc_actual = std::make_unique<Joc_Floreta>(nume1, nume2);
+        auto reguli = std::make_shared<Reguli_Arma_Floreta>("reguli/floreta.txt");
+        joc_actual = std::make_unique<Joc_Arma_Conventionala>(nume1, nume2, reguli);
     } else if (arma_aleasa == 2) {
-        joc_actual = std::make_unique<Joc_Sabie>(nume1, nume2);
+        auto reguli = std::make_shared<Reguli_Arma_Sabie>("reguli/sabie.txt");
+        joc_actual = std::make_unique<Joc_Arma_Conventionala>(nume1, nume2, reguli);
     } else {
         joc_actual = std::make_unique<Joc_Spada>(nume1, nume2);
     }

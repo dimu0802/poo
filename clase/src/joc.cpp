@@ -133,6 +133,7 @@ void Joc::proceseaza_actiuni_egale_comune(){
 }
 
 
+
 void Joc::afisare_tinta(){    
         std::cout << "\n"
         << "                  _______                 \n"
