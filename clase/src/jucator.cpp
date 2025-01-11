@@ -25,13 +25,6 @@ void Jucator::alegere_mutare(){
     }
 }
 
-void swap(Jucator& a, Jucator& b) noexcept{
-    using std::swap;
-    swap(a.nume, b.nume);
-    swap(a.pozitie, b.pozitie);
-    swap(a.numar_puncte, b.numar_puncte);
-}
-
 void Jucator::avanseaza_o_pozitie(){
     int pozitie_act=pozitie_actuala();
     pozitie_act++;

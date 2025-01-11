@@ -18,6 +18,10 @@ public:
     void start_joc();
     void alegere_arma();
     void nume_jucatori();
+
+    void swap(Lobby& other) noexcept;
+
+    Lobby& operator=(const Lobby& other);
 };
 
 #endif

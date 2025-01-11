@@ -41,3 +41,28 @@ void Lobby::alegere_arma() {
         joc_actual = std::make_unique<Joc_Spada>(nume1, nume2);
     }
 }
+
+Lobby& Lobby::operator=(const Lobby& other){
+    if (this==&other){
+        return *this;
+    }
+
+    std::unique_ptr<Joc> copie_joc=other.joc_actual ? other.joc_actual->clone() : nullptr;
+
+    nume1=other.nume1;
+    nume2=other.nume2;
+    arma_aleasa=other.arma_aleasa;
+
+    // Înlocuiește joc_actual
+    joc_actual=std::move(copie_joc);
+
+    return *this;
+}
+
+void Lobby::swap(Lobby& other) noexcept{
+    using std::swap;
+    swap(nume1, other.nume1);
+    swap(nume2, other.nume2);
+    swap(arma_aleasa, other.arma_aleasa);
+    swap(joc_actual, other.joc_actual);
+}

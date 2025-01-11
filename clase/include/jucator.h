@@ -22,7 +22,6 @@ public:
             std::cout<<"s a apelat operatorul =\n";
             return *this;
         }
-    friend void swap(Jucator& a, Jucator& b) noexcept;
     void alegere_mutare();
     void avanseaza_o_pozitie();
     void se_retrage_o_pozitie();
