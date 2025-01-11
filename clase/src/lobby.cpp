@@ -53,7 +53,6 @@ Lobby& Lobby::operator=(const Lobby& other){
     nume2=other.nume2;
     arma_aleasa=other.arma_aleasa;
 
-    // Înlocuiește joc_actual
     joc_actual=std::move(copie_joc);
 
     return *this;
