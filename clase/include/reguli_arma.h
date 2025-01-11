@@ -5,7 +5,7 @@
 #include <fstream>
 #include <iostream>
 
-class Reguli_Arma {
+class Reguli_Arma{
 protected:
     std::string reguli_fisier;
 
