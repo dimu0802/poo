@@ -10,18 +10,26 @@ Jucator::Jucator(const Jucator& other)
 :nume(other.nume), pozitie(other.pozitie), numar_puncte(other.numar_puncte){}
 
 void Jucator::alegere_mutare(){
-    std::cout<<"Alegeti in ce directie muti? ([1-Inapoi(spre suprafata[0]] [2-Inainte(spre suprafata[11])]\n";
-    int mutare;
-    std::cin>>mutare;
+    while (true) {
+        try {
+            std::cout<<"Alegeti in ce directie muti? ([1-Inapoi(spre suprafata[0])] [2-Inainte(spre suprafata[11])])\n";
+            int mutare;
+            std::cin>>mutare;
+ 
+            if (mutare!=1 && mutare!=2){
+                throw ExceptieInputInvalid("Mutarea aleasă este invalidă! Trebuie să fie 1 (înapoi) sau 2 (înainte).");
+            }
 
-    if(mutare!=1 && mutare!=2){
-        throw ExceptieInputInvalid("Mutarea aleasa este invalida! Trebuie sa fie 1 (inapoi) sau 2 (inainte).");
-    }
+            if (mutare==2){
+                avanseaza_o_pozitie();
+            }else if(mutare==1){
+                se_retrage_o_pozitie();
+            }
 
-    if(mutare==2){
-        avanseaza_o_pozitie();
-    }else if(mutare==1){
-        se_retrage_o_pozitie();
+            break;
+        }catch(const ExceptieInputInvalid& ex){
+            std::cerr<<ex.what()<<"\n";
+        }
     }
 }
 
@@ -42,15 +50,21 @@ void Jucator::actualizeaza_pozitie(int pozitie_dorita){
 }
 
 int Jucator::alege_actiune(){
-    std::cout<<"Alege actiunea dorita (ATAC[1], OCOLIRE DE PARADA[2], PARADA[3]): \n";
-    int actiune_aleasa;
-    std::cin>>actiune_aleasa;
+    while (true){
+        try{
+            std::cout<<"Alege actiunea dorita (ATAC[1], OCOLIRE DE PARADA[2], PARADA[3]): \n";
+            int actiune_aleasa;
+            std::cin>>actiune_aleasa;
 
-    if (actiune_aleasa!=1 && actiune_aleasa!=2 && actiune_aleasa!=3){
-        throw ExceptieInputInvalid("Actiunea aleasa este invalida! Trebuie sa fie 1 (ATAC), 2 (OCOLIRE DE PARADA), sau 3 (PARADA).");
+            if(actiune_aleasa!=1 && actiune_aleasa!=2 && actiune_aleasa!=3){
+                throw ExceptieInputInvalid("Actiunea aleasă este invalidă! Trebuie să fie 1 (ATAC), 2 (OCOLIRE DE PARADA), sau 3 (PARADA).");
+            }
+
+            return actiune_aleasa;
+        }catch(const ExceptieInputInvalid& ex){
+            std::cerr<<ex.what()<<"\n";
+        }
     }
-
-    return actiune_aleasa;
 }
 
 void Jucator::primeste_un_punct(){

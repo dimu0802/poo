@@ -23,26 +23,35 @@ void Lobby::nume_jucatori(){
     std::cin>>nume2;
 }
 
-void Lobby::alegere_arma() {
-    std::cout << "Alegeți proba de scrimă în care doriți să participați!\n";
-    std::cout << "FLORETĂ   SABIE   SPADĂ\n";
-    std::cout << "   1        2       3\n";
-    std::cin >> arma_aleasa;
+void Lobby::alegere_arma(){
+    while (true){
+        try{
+            std::cout<<"Alegeți proba de scrimă în care doriți să participați!\n";
+            std::cout<<"FLORETĂ   SABIE   SPADĂ\n";
+            std::cout<<"   1        2       3\n";
+            std::cin>>arma_aleasa;
 
-    if (arma_aleasa < 1 || arma_aleasa > 3) {
-        throw ExceptieInputInvalid("Arma aleasă este invalidă! Trebuie să fie între 1 și 3.");
-    }
+            if(arma_aleasa<1 || arma_aleasa>3){
+                throw ExceptieInputInvalid("Arma aleasă este invalidă! Trebuie să fie între 1 și 3.");
+            }
 
-    if (arma_aleasa == 1) {
-        auto reguli = std::make_shared<Reguli_Arma_Floreta>("reguli/floreta.txt");
-        joc_actual = std::make_unique<Joc_Arma_Conventionala>(nume1, nume2, reguli);
-    } else if (arma_aleasa == 2) {
-        auto reguli = std::make_shared<Reguli_Arma_Sabie>("reguli/sabie.txt");
-        joc_actual = std::make_unique<Joc_Arma_Conventionala>(nume1, nume2, reguli);
-    } else {
-        joc_actual = std::make_unique<Joc_Spada>(nume1, nume2);
+            if(arma_aleasa==1){
+                auto reguli=std::make_shared<Reguli_Arma_Floreta>("reguli/floreta.txt");
+                joc_actual=std::make_unique<Joc_Arma_Conventionala>(nume1, nume2, reguli);
+            }else if(arma_aleasa==2){
+                auto reguli=std::make_shared<Reguli_Arma_Sabie>("reguli/sabie.txt");
+                joc_actual=std::make_unique<Joc_Arma_Conventionala>(nume1, nume2, reguli);
+            }else{
+                joc_actual=std::make_unique<Joc_Spada>(nume1, nume2);
+            }
+
+            break;
+        }catch(const ExceptieInputInvalid& ex){
+            std::cerr<<ex.what()<<"\n";
+        }
     }
 }
+
 
 Lobby& Lobby::operator=(const Lobby& other){
     if (this==&other){
