@@ -8,7 +8,10 @@ void Lobby::start_joc() {
     alegere_arma();
 
     if (joc_actual){
-        joc_actual->start();      
+        joc_actual->start();
+        std::cout << "Se creează o copie a jocului curent...\n";
+        auto copie_joc = joc_actual->clone();
+        std::cout << "Copia jocului a fost creată cu succes!\n";
     }
 }
 
