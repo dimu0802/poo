@@ -10,6 +10,7 @@
 #include "joc_floreta.h"
 #include "joc_sabie.h"
 #include "joc_spada.h"
+//#include "joc_arma_conventionala.h"
 
 int main(){
 

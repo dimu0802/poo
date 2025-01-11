@@ -81,4 +81,3 @@ bool Joc_Floreta::moment_al_jocului(){
 
     return true;
 }
-

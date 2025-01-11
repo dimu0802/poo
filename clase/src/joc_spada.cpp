@@ -86,4 +86,3 @@ bool Joc_Spada::moment_al_jocului(){
     return true;
 }
 
-
