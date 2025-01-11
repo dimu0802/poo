@@ -1,6 +1,7 @@
 #ifndef CONSTANTE_H
 #define CONSTANTE_H
 
+
 constexpr int capat_stanga=0;
 constexpr int capat_dreapta=11;
 constexpr int lungime_plansa=12;

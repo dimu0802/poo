@@ -25,7 +25,7 @@ int main(){
                 <<"===================================\n";
 
         Lobby lobby;
-        lobby.start_joc("reguli/floreta.txt", "reguli/sabie.txt", "reguli/spada.txt");
+        lobby.start_joc();
     }catch(const ExceptieInputInvalid& ex){
         std::cerr<<"Eroare de input: "<<ex.what()<<std::endl;
     }catch(const std::exception& ex){

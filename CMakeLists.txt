@@ -83,6 +83,9 @@ if(APPLE)
     install(FILES launcher.command DESTINATION ${DESTINATION_DIR})
 endif()
 
+file(COPY ${CMAKE_SOURCE_DIR}/reguli DESTINATION ${CMAKE_BINARY_DIR})
+
+
 
 include(cmake/CopyHelper.cmake)
 copy_files(FILES tastatura.txt)

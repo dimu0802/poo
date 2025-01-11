@@ -1,71 +1,40 @@
 #include <iostream>
-#include <vector>
-#include <fstream>
-#include <string>
+#include <memory>
 #include "../include/lobby.h"
 
-void Lobby::start_joc(const std::string& reguli_floreta, const std::string& reguli_sabie, const std::string& reguli_spada){
+void Lobby::start_joc() {
     nume_jucatori();
-    std::cout<<"\nAcum ca stim numele adversarilor, sa alegem arma cu care va veti confrunta";
-    alegere_arma(reguli_floreta, reguli_sabie, reguli_spada);
+    std::cout << "\nAcum că știm numele adversarilor, să alegem arma cu care vă veți confrunta.\n";
+    alegere_arma();
 
     if (joc_actual){
-        std::cout << "Se creează o copie a jocului curent...\n";
-        auto copie_joc = joc_actual->clone();
-        std::cout << "Copia jocului a fost creată cu succes!\n";
+        joc_actual->start();      
     }
 }
 
 void Lobby::nume_jucatori(){
-    std::cout<<"\nSportivi, alegeti-va numele:\n";
-    std::cout<<"Numele Jucatorului 1: ";
-    std::cin>>nume1;
-    std::cout<<"Numele Jucatorului 2: ";
-    std::cin>>nume2;
+    std::cout << "\nSportivi, alegeți-vă numele:\n";
+    std::cout << "Numele Jucătorului 1: ";
+    std::cin >> nume1;
+    std::cout << "Numele Jucătorului 2: ";
+    std::cin >> nume2;
 }
 
-void Lobby::alegere_arma(const std::string &reguli_floreta, const std::string &reguli_sabie, const std::string &reguli_spada){
-    std::cout<<"Alegeti proba de scrima in care doriti sa participati!\n";
-    std::cout<<"FLORETA   SABIE   SPADA\n";
-    std::cout<<"   1        2       3\n";
-    std::cin>>arma_aleasa;
+void Lobby::alegere_arma() {
+    std::cout << "Alegeți proba de scrimă în care doriți să participați!\n";
+    std::cout << "FLORETĂ   SABIE   SPADĂ\n";
+    std::cout << "   1        2       3\n";
+    std::cin >> arma_aleasa;
 
-    if(arma_aleasa<1||arma_aleasa>3){
-        throw ExceptieInputInvalid("Arma aleasa este invalida! Trebuie sa fie intre 1 si 3.");
+    if (arma_aleasa < 1 || arma_aleasa > 3) {
+        throw ExceptieInputInvalid("Arma aleasă este invalidă! Trebuie să fie între 1 și 3.");
     }
 
-    if(arma_aleasa==1){
-        afisare_reguli(reguli_floreta);
-        joc_actual=std::make_unique<Joc_Floreta>(nume1, nume2);
-    }else if(arma_aleasa==2) {
-        afisare_reguli(reguli_sabie);
-        joc_actual=std::make_unique<Joc_Sabie>(nume1, nume2);
-    }else{
-        afisare_reguli(reguli_spada);
-        joc_actual=std::make_unique<Joc_Spada>(nume1, nume2);
-    }
-
-    if(joc_actual){
-        joc_actual->start();
+    if (arma_aleasa == 1) {
+        joc_actual = std::make_unique<Joc_Floreta>(nume1, nume2);
+    } else if (arma_aleasa == 2) {
+        joc_actual = std::make_unique<Joc_Sabie>(nume1, nume2);
+    } else {
+        joc_actual = std::make_unique<Joc_Spada>(nume1, nume2);
     }
 }
-
-void Lobby::afisare_reguli(const std::string& fisier){
-    std::vector<std::string> reguli;
-    std::ifstream fin(fisier);
-    if(!fin){
-        std::cout<<"Eroare la deschiderea fișierului.\n";
-        return;
-    }
-    std::string linie;
-    while(std::getline(fin, linie)){
-        reguli.push_back(linie);
-    }
-    fin.close();
-    for (const auto& regula:reguli){
-        std::cout<<regula<<"\n";
-    }
-}
-
-
-
