@@ -45,8 +45,6 @@ protected:
     virtual bool validare_lovitura(int punct_lovitura)=0;
 
     void proceseaza_actiuni_egale_comune();
-    void afisare_statistici_final() const;
-
 private: 
     bool statistici_afisate=false;
     bool castigator_afisat=false; 

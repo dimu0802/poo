@@ -141,11 +141,6 @@ void Joc::proceseaza_actiuni_egale_comune(){
     std::cout << suprafata;
 }
 
-void Joc::afisare_statistici_final() const {
-    std::cout << "\n=== Statistici ale meciului ===\n";
-    statistici.afisare_statistici();
-}
-
 void Joc::afisare_tinta(){    
         std::cout << "\n"
         << "                  _______                 \n"
