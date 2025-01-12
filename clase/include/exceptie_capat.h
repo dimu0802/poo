@@ -1,5 +1,5 @@
 
-#ifndef EXCEPTIE__CAPAT_H
+#ifndef EXCEPTIE_CAPAT_H
 #define EXCEPTIE_CAPAT_H
 #include <exception>
 #include <string>
