@@ -19,6 +19,7 @@ set(SRC_FILES
     clase/src/joc_arma_conventionala.cpp
     clase/src/reguli_floreta.cpp 
     clase/src/reguli_sabie.cpp 
+    clase/src/statistici.cpp
 )
 
 include(cmake/Options.cmake)

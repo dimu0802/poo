@@ -12,6 +12,7 @@
 #include "reguli_arma.h"
 #include "reguli_floreta.h"
 #include "reguli_sabie.h"
+#include "statistici.h"
 
 int main(){
 

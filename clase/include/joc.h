@@ -4,6 +4,7 @@
 #include "jucator.h"
 #include "suprafata.h"
 #include "constante.h"
+#include "statistici.h"
 #include <memory>
 
 class Joc{
@@ -15,6 +16,7 @@ public:
     Jucator p1;
     Jucator p2;
     Suprafata suprafata;
+    Statistici statistici;
 
     Joc(const std::string& nume1, const std::string& nume2, 
         const std::string& reguli_fisier, int pozitie1 = 4, int pozitie2 = 7, 
@@ -43,6 +45,11 @@ protected:
     virtual bool validare_lovitura(int punct_lovitura)=0;
 
     void proceseaza_actiuni_egale_comune();
+    void afisare_statistici_final() const;
+
+private: 
+    bool statistici_afisate=false;
+    bool castigator_afisat=false; 
 };
 
 #endif

@@ -12,23 +12,23 @@ Jucator::Jucator(const Jucator& other)
 void Jucator::alegere_mutare(){
     while (true) {
         try {
-            std::cout<<"Alegeti in ce directie muti? ([1-Inapoi(spre suprafata[0])] [2-Inainte(spre suprafata[11])])\n";
+            std::cout << "Alegeti in ce directie muti? ([1-Inapoi] [2-Inainte])\n";
             int mutare;
-            std::cin>>mutare;
- 
-            if (mutare!=1 && mutare!=2){
-                throw ExceptieInputInvalid("Mutarea aleasă este invalidă! Trebuie să fie 1 (înapoi) sau 2 (înainte).");
+            std::cin >> mutare;
+
+            if (mutare != 1 && mutare != 2) {
+                throw ExceptieInputInvalid("Mutarea aleasă este invalidă! Trebuie să fie 1 sau 2.");
             }
 
-            if (mutare==2){
+            if (mutare == 2) {
                 avanseaza_o_pozitie();
-            }else if(mutare==1){
+            } else if (mutare == 1) {
                 se_retrage_o_pozitie();
             }
 
             break;
-        }catch(const ExceptieInputInvalid& ex){
-            std::cerr<<ex.what()<<"\n";
+        } catch (const ExceptieInputInvalid& ex) {
+            std::cerr << ex.what() << "\n";
         }
     }
 }

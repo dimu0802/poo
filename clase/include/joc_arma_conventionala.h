@@ -5,7 +5,7 @@
 #include "reguli_arma.h"
 #include <memory>
 
-class Joc_Arma_Conventionala : public Joc {
+class Joc_Arma_Conventionala : public Joc{
     std::shared_ptr<Reguli_Arma> reguli;
 
 public:

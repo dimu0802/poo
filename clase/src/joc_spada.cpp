@@ -78,6 +78,9 @@ bool Joc_Spada::moment_al_jocului(){
     std::cout<<p2.get_nume()<<": ";
     int actiune2=p2.alege_actiune();
 
+    statistici.inregistreaza_actiune(p1.get_nume(), actiune1, p1.pozitie_actuala(), p2.pozitie_actuala());
+    statistici.inregistreaza_actiune(p2.get_nume(), actiune2, p2.pozitie_actuala(), p1.pozitie_actuala());
+
     if(actiune1==actiune2){
         proceseaza_actiuni_egale();
     }else{

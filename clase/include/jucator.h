@@ -4,12 +4,14 @@
 #include <iostream>
 #include "constante.h"
 #include "exceptii.h"
+#include "statistici.h"
 
 class Jucator{
 private:
     std::string nume;
     int pozitie;
     int numar_puncte;
+    Statistici statistici;
 public:
     explicit Jucator(const std::string& numedat, int pozitie_initiala, int numar_puncte_initial);
     Jucator(const Jucator& other);

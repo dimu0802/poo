@@ -42,6 +42,7 @@ void Joc::continua(){
             std::cout << p2.get_nume()<<": ";
             p2.alegere_mutare();
 
+
             suprafata.suprafata_noua();
             std::cout << suprafata;
 
@@ -63,10 +64,14 @@ void Joc::continua(){
         }
 
         if(verificare_meci_incheiat()){
+            if (!statistici_afisate){
+                statistici.afisare_statistici();
+                statistici_afisate = true;
+            }
             break;
         }
     }
-}
+}s
 
 void Joc::continuare_moment_lupta(){
     if (moment_al_jocului()){
@@ -94,6 +99,7 @@ void Joc::jucator_la_capat(){
         std::cout<<"Jucatorul p2 va fi mutat automat o pozitie inapoi, deoarece este la capat\n";
         p2.se_retrage_o_pozitie();
         std::cout<<p1.get_nume()<<": ";
+
         p1.alegere_mutare();
     }
     suprafata.suprafata_noua();
@@ -107,11 +113,14 @@ void Joc::jucator_la_capat(){
 }
 
 bool Joc::verificare_meci_incheiat(){
-    if (p1.scor_actual()==5 && p2.scor_actual()!=5){
-        std::cout<<"Felicitari! "<< p1.get_nume()<<" castiga Aurul!\n";
-        return true;
-    }else if(p2.scor_actual()==5 && p1.scor_actual()!=5){
-        std::cout<<"Felicitari! "<< p2.get_nume()<<" castiga Aurul!\n";
+    if ((p1.scor_actual()==5 && p2.scor_actual()!=5) ||
+        (p2.scor_actual()==5 && p1.scor_actual()!=5)){
+        if (!castigator_afisat){
+            std::cout<<"Felicitari! " 
+                     <<(p1.scor_actual()==5 ? p1.get_nume() : p2.get_nume())
+                    <<" castiga Aurul!\n";
+            castigator_afisat=true; 
+        }
         return true;
     }
     return false;
@@ -132,7 +141,10 @@ void Joc::proceseaza_actiuni_egale_comune(){
     std::cout << suprafata;
 }
 
-
+void Joc::afisare_statistici_final() const {
+    std::cout << "\n=== Statistici ale meciului ===\n";
+    statistici.afisare_statistici();
+}
 
 void Joc::afisare_tinta(){    
         std::cout << "\n"

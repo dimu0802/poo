@@ -1,0 +1,17 @@
+In jocul de spada, nu exista avantaje in functie de actiunea aleasa.
+In cazul in care cei doi jucatori aleg acceasi actiune, ambii jucatori vor
+puncta(intamplare cunoscuta sub numele de LOVITURA DUBLA).
+
+Scenariile de punctare sunt dupa cum urmeaza:
+1. ATAC-PARADA: puncteaza jucatorul care a ales parada si se revine la pozitiile initiale
+2. OCOLIRE-PARADA: puncteaza jucatorul care a ales ocolire si se revine la pozitiile initiale
+3. ATAC-OCOLIRE, ATAC-ATAC sau OCOLIRE-OCOLIRE: puncteaza ambii jucatori si se revine la 
+pozitiile initiale
+4. PARADA-PARADA: nu puncteaza niciun jucator, si cei doi se retrag cate o pozitie.
+
+O alta regula importanta: 
+SE PUNCTEAZA LOVITURILE INREGISTRATE IN ORICE PARTE A CORPULUI!
+
+Asta este tot. Jucatori, mult succes! Fie ca cel mai bun sa castige!
+
+Sa inceapa meciul!
