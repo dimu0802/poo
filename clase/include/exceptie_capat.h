@@ -16,5 +16,4 @@ public:
         return mesaj.c_str();
     }
 };
-
 #endif
