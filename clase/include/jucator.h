@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "constante.h"
+#include "exceptie_baza.h"
 #include "exceptie_input.h"
 #include "statistici.h"
 #include "exceptie_capat.h"

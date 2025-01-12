@@ -1,7 +1,7 @@
-
 #include <iostream>
 #include <string>
 #include "constante.h"
+#include "exceptie_baza.h"
 #include "exceptie_input.h"
 #include "exceptie_capat.h"
 #include "exceptie_lovitura_dubla.h"
@@ -31,8 +31,8 @@ int main(){
 
         Lobby lobby;
         lobby.start_joc();
-    }catch(const ExceptieInputInvalid& ex){
-        std::cerr<<"Eroare de input: "<<ex.what()<<std::endl;
+    }catch(const ExceptieBaza& ex){
+        std::cerr<<"Eroare specifica: "<<ex.what()<<std::endl;
     }catch(const std::exception& ex){
         std::cerr<<"Eroare generala: "<<ex.what()<<std::endl;
     }

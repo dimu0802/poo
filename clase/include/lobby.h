@@ -3,6 +3,7 @@
 #include "joc.h"
 #include "joc_spada.h"
 #include "constante.h"
+#include "exceptie_baza.h"
 #include "exceptie_input.h"
 #include "joc_arma_conventionala.h"
 #include "reguli_arma.h"

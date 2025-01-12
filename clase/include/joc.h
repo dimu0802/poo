@@ -4,6 +4,7 @@
 #include "jucator.h"
 #include "suprafata.h"
 #include "constante.h"
+#include "exceptie_baza.h"
 #include "exceptie_capat.h"
 #include "statistici.h"
 #include <memory>

@@ -2,6 +2,7 @@
 #define JOC_SPADA_H
 
 #include "joc.h"
+#include "exceptie_baza.h"
 #include "exceptie_lovitura_dubla.h"
 
 class Joc_Spada:public Joc{

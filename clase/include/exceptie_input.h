@@ -1,18 +1,12 @@
-#ifndef EXCEPTII_H
-#define EXCEPTII_H
+#ifndef EXCEPTII_INPUT_INVALID_H
+#define EXCEPTII_INPUT_INVALID_H
 
-#include <exception>
-#include <string>
+#include "exceptie_baza.h"
 
-class ExceptieInputInvalid : public std::exception{
-private:
-    std::string mesaj;
+class ExceptieInputInvalid:public ExceptieBaza{
 public:
-    explicit ExceptieInputInvalid(const std::string& mesaj_eroare):mesaj(mesaj_eroare){}
-
-    const char* what() const noexcept override{ 
-        return mesaj.c_str();
-    }
+    explicit ExceptieInputInvalid(const std::string& msg):ExceptieBaza(msg){}
 };
 
 #endif
+
