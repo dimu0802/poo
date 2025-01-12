@@ -71,7 +71,7 @@ void Joc::continua(){
             break;
         }
     }
-}s
+}
 
 void Joc::continuare_moment_lupta(){
     if (moment_al_jocului()){

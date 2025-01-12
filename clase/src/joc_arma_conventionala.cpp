@@ -19,37 +19,35 @@ void Joc_Arma_Conventionala::start(){
 }
 
 void Joc_Arma_Conventionala::proceseaza_actiuni_diferite(int actiune1, int actiune2) {
-    // Determinăm cine are prioritate pe baza acțiunilor
     if ((actiune1 == atac && actiune2 == parada) ||
         (actiune1 == ocolire && actiune2 == atac) ||
         (actiune1 == parada && actiune2 == ocolire)) {
-        // Jucătorul 2 are prioritate
-        std::cout << p2.get_nume() << " are prioritate și lovește!\n";
+        std::cout<<p2.get_nume()<<" are prioritate și lovește!\n";
         afisare_tinta();
-        std::cout << p2.get_nume() << ": Alege punctul unde lovești (1-6): ";
+        std::cout<<p2.get_nume()<<": Alege punctul unde lovești (1-6): ";
         int punct_lovitura;
-        std::cin >> punct_lovitura;
+        std::cin>>punct_lovitura;
 
-        if (reguli->validare_lovitura(punct_lovitura)) {
-            std::cout << "Lovitura este valabilă! " << p2.get_nume() << " punctează!\n";
+        if (reguli->validare_lovitura(punct_lovitura)){
+            std::cout<<"Lovitura este valabilă! "<<p2.get_nume()<<" punctează!\n";
             p2.primeste_un_punct();
-        } else {
-            std::cout << "Lovitura este invalidă! Jucătorii revin la pozițiile anterioare.\n";
+        }else{
+            std::cout<<"Lovitura este invalidă! Jucătorii revin la pozițiile anterioare.\n";
             p1.revenire_pozitie_initiala(pozitie_initiala_p1);
             p2.revenire_pozitie_initiala(pozitie_initiala_p2);
         }
-    } else {
-        std::cout << p1.get_nume() << " are prioritate și lovește!\n";
+    }else{
+        std::cout<<p1.get_nume()<<" are prioritate și lovește!\n";
         afisare_tinta();
-        std::cout << p1.get_nume() << ": Alege punctul unde lovești (1-6): ";
+        std::cout<<p1.get_nume()<<": Alege punctul unde lovești (1-6): ";
         int punct_lovitura;
-        std::cin >> punct_lovitura;
+        std::cin>>punct_lovitura;
 
-        if (reguli->validare_lovitura(punct_lovitura)) {
-            std::cout << "Lovitura este valabilă! " << p1.get_nume() << " punctează!\n";
+        if(reguli->validare_lovitura(punct_lovitura)){
+            std::cout<<"Lovitura este valabilă! "<<p1.get_nume()<<" punctează!\n";
             p1.primeste_un_punct();
-        } else {
-            std::cout << "Lovitura este invalidă! Jucătorii revin la pozițiile anterioare.\n";
+        }else{
+            std::cout<<"Lovitura este invalidă! Jucătorii revin la pozițiile anterioare.\n";
             p1.revenire_pozitie_initiala(pozitie_initiala_p1);
             p2.revenire_pozitie_initiala(pozitie_initiala_p2);
         }
