@@ -89,8 +89,6 @@ bool Joc_Spada::moment_al_jocului(){
         }
     }catch (const ExceptieLovituraDubla& ex) {
         std::cout << ex.what() << "\n";
-        // p1.scade_un_punct();
-        // p2.scade_un_punct();
         std::cout <<"Scor: "<<p1.scor_actual()<< "-" << p2.scor_actual() << "\n";
     }
 

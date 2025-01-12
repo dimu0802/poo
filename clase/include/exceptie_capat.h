@@ -1,5 +1,6 @@
-#pragma once
 
+#ifndef EXCEPTIE__CAPAT_H
+#define EXCEPTIE_CAPAT_H
 #include <exception>
 #include <string>
 
@@ -9,9 +10,11 @@ private:
 
 public:
     explicit ExceptiePozitieCapat(const std::string& mesaj_eroare)
-        : mesaj(mesaj_eroare) {}
+        :mesaj(mesaj_eroare){}
 
-    const char* what() const noexcept override {
+    const char* what() const noexcept override{
         return mesaj.c_str();
     }
 };
+
+#endif

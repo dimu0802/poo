@@ -5,7 +5,7 @@
 void Reguli_Arma_Floreta::afisare_reguli() const{
     std::ifstream fin(reguli_fisier);
     if (!fin){
-        std::cerr << "Eroare la deschiderea fișierului de reguli: " << reguli_fisier << "\n";
+        std::cerr<<"Eroare la deschiderea: "<<reguli_fisier<<"\n";
         return;
     }
     std::string linie;

@@ -22,7 +22,7 @@ public:
                 pozitie=other.pozitie;
                 numar_puncte=other.numar_puncte;
             }
-            std::cout<<"s a apelat operatorul =\n";
+            std::cout<<"s-a apelat operatorul =\n";
             return *this;
         }
     void alegere_mutare();

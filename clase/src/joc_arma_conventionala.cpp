@@ -18,7 +18,7 @@ void Joc_Arma_Conventionala::start(){
     continua();
 }
 
-void Joc_Arma_Conventionala::proceseaza_actiuni_diferite(int actiune1, int actiune2) {
+void Joc_Arma_Conventionala::proceseaza_actiuni_diferite(int actiune1, int actiune2){
     if ((actiune1 == atac && actiune2 == parada) ||
         (actiune1 == ocolire && actiune2 == atac) ||
         (actiune1 == parada && actiune2 == ocolire)) {

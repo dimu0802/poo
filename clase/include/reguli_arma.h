@@ -10,7 +10,7 @@ protected:
     std::string reguli_fisier;
 
 public:
-    explicit Reguli_Arma(const std::string& fisier) : reguli_fisier(fisier){}
+    explicit Reguli_Arma(const std::string& fisier):reguli_fisier(fisier){}
     virtual ~Reguli_Arma()=default;
 
     virtual bool validare_lovitura(int punct_lovitura) const=0;
@@ -18,7 +18,7 @@ public:
     virtual void afisare_reguli() const{
         std::ifstream fin(reguli_fisier);
         if (!fin){
-            std::cerr<<"Eroare la deschiderea fișierului de reguli: "<<reguli_fisier<<"\n";
+            std::cerr<<"Eroare la deschiderea: "<<reguli_fisier<<"\n";
             return;
         }
 
