@@ -35,7 +35,7 @@ void Joc_Spada::proceseaza_actiuni_egale_spada(int actiune){
     if(p1.scor_actual()==4 && p2.scor_actual()==4){
         std::cout<<"Egalitate la 4-4! Se aplica regula speciala pentru spada.\n";
         if(actiune== atac||actiune==ocolire){
-            std::cout<<"Lovitura dubla! Se scade un punct de la fiecare jucator.\n";
+            throw ExceptieLovituraDubla("Lovitură dublă! Ambii jucători pierd câte un punct.");
         }else{
             std::cout << "Ambii jucatori au parat! Faza se repeta.\n";
         }
@@ -72,20 +72,29 @@ bool Joc_Spada::validare_lovitura(int punct_lovitura){
 }
 
 bool Joc_Spada::moment_al_jocului(){
-    std::cout << "Moment de lupta in spada! Fiecare jucator sa-si aleaga actiunea.\n";
-    std::cout<<p1.get_nume()<<": ";
-    int actiune1=p1.alege_actiune();
-    std::cout<<p2.get_nume()<<": ";
-    int actiune2=p2.alege_actiune();
+    try{
+        std::cout << "Moment de lupta in spada! Fiecare jucator sa-si aleaga actiunea.\n";
+        std::cout<<p1.get_nume()<<": ";
+        int actiune1=p1.alege_actiune();
+        std::cout<<p2.get_nume()<<": ";
+        int actiune2=p2.alege_actiune();
 
-    statistici.inregistreaza_actiune(p1.get_nume(), actiune1, p1.pozitie_actuala(), p2.pozitie_actuala());
-    statistici.inregistreaza_actiune(p2.get_nume(), actiune2, p2.pozitie_actuala(), p1.pozitie_actuala());
+        statistici.inregistreaza_actiune(p1.get_nume(), actiune1, p1.pozitie_actuala(), p2.pozitie_actuala());
+        statistici.inregistreaza_actiune(p2.get_nume(), actiune2, p2.pozitie_actuala(), p1.pozitie_actuala());
 
-    if(actiune1==actiune2){
-        proceseaza_actiuni_egale();
-    }else{
-        proceseaza_actiuni_diferite(actiune1, actiune2);
+        if(actiune1==actiune2){
+            proceseaza_actiuni_egale();
+        }else{
+            proceseaza_actiuni_diferite(actiune1, actiune2);
+        }
+    }catch (const ExceptieLovituraDubla& ex) {
+        std::cout << ex.what() << "\n";
+        // p1.scade_un_punct();
+        // p2.scade_un_punct();
+        std::cout <<"Scor: "<<p1.scor_actual()<< "-" << p2.scor_actual() << "\n";
     }
+
+
     return true;
 }
 

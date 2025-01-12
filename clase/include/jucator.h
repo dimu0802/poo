@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include "constante.h"
-#include "exceptii.h"
+#include "exceptie_input.h"
 #include "statistici.h"
+#include "exceptie_capat.h"
 
 class Jucator{
 private:
@@ -30,7 +31,7 @@ public:
     void actualizeaza_pozitie(int pozitie_dorita);
     int alege_actiune();
     void primeste_un_punct();
-    //void scade_un_punct();
+    // void scade_un_punct();
     int scor_actual();
     int pozitie_actuala() const;
     const std::string& get_nume() const; 

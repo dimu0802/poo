@@ -90,10 +90,13 @@ Jucator::~Jucator(){}
 
 bool Jucator::verificare_pozitie_capat(){
     int poz=pozitie_actuala();
-    if(poz==capat_dreapta || poz==capat_stanga){
-        return true;
+    if(poz==capat_dreapta){
+        throw ExceptiePozitieCapat(nume+" a ajuns la capat");
     }
-    else return false;
+    if(poz==capat_stanga){
+        throw ExceptiePozitieCapat(nume + " a ajuns la capat");
+    }
+    return false;
 }
 
 

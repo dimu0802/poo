@@ -49,7 +49,7 @@ void Statistici::afisare_statistici() const{
         std::cout<<"Jucător: "<<nume << "\n"
                  <<"-Agresivitate/Pragmatism: " << determina_agresivitate(stat)<<"\n"
                  <<"-Stil de joc: " << determina_stil_joc(stat) << "\n"
-                 <<"-Procentaj acțiuni alese:"
+                 <<"-Procentaj acțiuni alese:\n"
                  <<"   * Atacuri: "<<procent_atacuri<<"%\n"
                  <<"   * Parade: "<<procent_parade<<"%\n"
                  <<"   * Ocoliri: "<<procent_ocoliri<<"%\n"

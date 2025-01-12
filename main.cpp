@@ -2,7 +2,9 @@
 #include <iostream>
 #include <string>
 #include "constante.h"
-#include "exceptii.h"
+#include "exceptie_input.h"
+#include "exceptie_capat.h"
+#include "exceptie_lovitura_dubla.h"
 #include "joc.h"
 #include "jucator.h"
 #include "suprafata.h"

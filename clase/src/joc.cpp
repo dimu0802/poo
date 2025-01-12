@@ -36,42 +36,41 @@ void Joc::afiseaza_reguli(){
 
 void Joc::continua(){
     while(true){
-        if (!p1.verificare_pozitie_capat() && !p2.verificare_pozitie_capat()){
-            std::cout << p1.get_nume()<<": ";
-            p1.alegere_mutare();
-            std::cout << p2.get_nume()<<": ";
-            p2.alegere_mutare();
-
-
-            suprafata.suprafata_noua();
-            std::cout << suprafata;
-
-            if (verificare_moment_lupta()){
-                continuare_moment_lupta();
-            }else{
-                continua();
+        try{
+            if(!p1.verificare_pozitie_capat() && !p2.verificare_pozitie_capat()){
+                std::cout<<p1.get_nume()<<": "; p1.alegere_mutare();
+                std::cout<<p2.get_nume()<<": "; p2.alegere_mutare();
+                suprafata.suprafata_noua();
+                std::cout << suprafata;
+                if (verificare_moment_lupta()){
+                    continuare_moment_lupta();
+                }
+            } 
+            else if(p1.verificare_pozitie_capat() && p2.verificare_pozitie_capat()){
+                throw ExceptiePozitieCapat("Ambii jucatori sunt la capat!");
+            } 
+            else{
+                jucator_la_capat();
             }
 
-        }else if(p1.verificare_pozitie_capat() && p2.verificare_pozitie_capat()){
-            std::cout<<"Ambii jucatori vor avansa o pozitie automat, deoarece sunt la capatul plansei\n";
+            if (verificare_meci_incheiat()){
+                if(!statistici_afisate){
+                    statistici.afisare_statistici();
+                    statistici_afisate=true;
+                }
+                break;
+            }
+        } 
+        catch(const ExceptiePozitieCapat& ex){
+            std::cout<<ex.what()<<"\n";
             p1.avanseaza_o_pozitie();
             p2.se_retrage_o_pozitie();
             suprafata.suprafata_noua();
             std::cout<<suprafata;
-            continua();
-        }else{
-            jucator_la_capat();
-        }
-
-        if(verificare_meci_incheiat()){
-            if (!statistici_afisate){
-                statistici.afisare_statistici();
-                statistici_afisate = true;
-            }
-            break;
         }
     }
 }
+
 
 void Joc::continuare_moment_lupta(){
     if (moment_al_jocului()){
@@ -90,17 +89,24 @@ void Joc::continuare_moment_lupta(){
 }
 
 void Joc::jucator_la_capat(){
-    if (p1.verificare_pozitie_capat()){
-        std::cout<<"Jucatorul p1 va fi mutat automat o pozitie inainte, deoarece este la capat\n";
-        p1.avanseaza_o_pozitie();
-        std::cout<<p2.get_nume()<<": ";
-        p2.alegere_mutare();
-    }else if(p2.verificare_pozitie_capat()){
-        std::cout<<"Jucatorul p2 va fi mutat automat o pozitie inapoi, deoarece este la capat\n";
-        p2.se_retrage_o_pozitie();
-        std::cout<<p1.get_nume()<<": ";
-
-        p1.alegere_mutare();
+    try{
+        if(p1.verificare_pozitie_capat()){
+            throw ExceptiePozitieCapat(p1.get_nume() + " este la capăt. Se va avansa automat o poziție.");
+        }
+        if(p2.verificare_pozitie_capat()){
+            throw ExceptiePozitieCapat(p2.get_nume() + " este la capăt. Se va retrage automat o poziție.");
+        }
+    }catch(const ExceptiePozitieCapat& ex){
+        std::cout<<ex.what()<<"\n";
+        if(p1.verificare_pozitie_capat()){
+            p1.avanseaza_o_pozitie();
+            std::cout<<p2.get_nume()<<": ";
+            p2.alegere_mutare();
+        }else if(p2.verificare_pozitie_capat()){
+            p2.se_retrage_o_pozitie();
+            std::cout<<p1.get_nume() <<": ";
+            p1.alegere_mutare();
+        }
     }
     suprafata.suprafata_noua();
     std::cout<<suprafata;

@@ -8,7 +8,7 @@ Scenariile de punctare sunt dupa cum urmeaza:
 2. ATAC-PARADA: puncteaza jucatorul care a ales parada si se revine la pozitiile initiale
 3. OCOLIRE-PARADA: puncteaza jucatorul care a ales ocolire si se revine la pozitiile initiale
 4. ORICE ACTIUNE aleasa de AMBII JUCATORI: nu puncteaza niciun jucator si se revine la pozitia 
-initiala
+anterioara(daca in momentul de lupta, P1 era pe pozitia 4, el va reveni pe pozitia 3 si meciul continua)
 
 
 O alta regula importanta: 
