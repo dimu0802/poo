@@ -6,6 +6,7 @@
 class ExceptieInputInvalid:public ExceptieBaza{
 public:
     explicit ExceptieInputInvalid(const std::string& msg):ExceptieBaza(msg){}
+
     
 };
 
