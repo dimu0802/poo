@@ -10,7 +10,7 @@
 #include <memory>
 
 class Joc{
-public:
+protected:
     static const int scor_maxim; 
     static const int pozitie_initiala_p1; 
     static const int pozitie_initiala_p2; 
@@ -19,6 +19,7 @@ public:
     Jucator p2;
     Suprafata suprafata;
     Statistici statistici;
+public:
 
     Joc(const std::string& nume1, const std::string& nume2, 
         const std::string& reguli_fisier, int pozitie1 = 4, int pozitie2 = 7, 
